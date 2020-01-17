@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="main.css" />
+    <Content Include="salim.html" />
     <Content Include="test.aspx" />
     <Content Include="test2.aspx" />
     <Content Include="testpage2.html" />
