@@ -71,6 +71,7 @@
     <Content Include="main.css" />
     <Content Include="test.aspx" />
     <Content Include="test2.aspx" />
+    <Content Include="testpage2.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
