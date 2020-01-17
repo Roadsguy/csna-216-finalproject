@@ -72,7 +72,7 @@
     <Content Include="salim.html" />
     <Content Include="test.aspx" />
     <Content Include="test2.aspx" />
-    <Content Include="testpage2.html" />
+    <Content Include="testoncemore.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
