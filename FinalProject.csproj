@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Brandon.html" />
     <Content Include="Default.aspx" />
     <Content Include="main.css" />
     <Content Include="test.aspx" />
