@@ -84,8 +84,13 @@ namespace FinalProject
 			}
 			catch
 			{
-				// MessageBox.Show("Failed to load drug data", SEARCH_DLG_NAME, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load drug data')", true);
 			}
+		}
+
+		protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Selection changed!')", true);
 		}
 	}
 }

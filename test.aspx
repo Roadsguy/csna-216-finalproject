@@ -27,7 +27,7 @@
 		<asp:TextBox ID="txtDrugIDSearch" runat="server"></asp:TextBox>
 		<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
 		<br />
-		<asp:GridView ID="GridView1" runat="server">
+		<asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
 		</asp:GridView>
     </form>
 </body>
