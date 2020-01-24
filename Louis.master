@@ -15,53 +15,11 @@
 		</header>
 		<div class="mainbody">
 			<nav>
-				<h2 class="nav">Patients</h2>
-				<div class="navblock">
-					<asp:HyperLink CssClass="nav nav-half" ID="navSearchPatient" runat="server" NavigateUrl="test.aspx">Search</asp:HyperLink>
-					<asp:HyperLink CssClass="nav nav-half" ID="navAddPatient" runat="server" NavigateUrl="test.aspx">Add</asp:HyperLink>
-					<asp:HyperLink CssClass="nav nav-half" ID="navEditPatient" runat="server" NavigateUrl="test.aspx">Edit</asp:HyperLink>
-					<asp:HyperLink CssClass="nav nav-half" ID="navDeletePatient" runat="server" NavigateUrl="test.aspx">Delete</asp:HyperLink>
-				</div>
-
-				<hr class="nav" />
-
-				<h2 class="nav">Physicians</h2>
-				<div class="navblock">
-					<asp:HyperLink class="nav nav-half" ID="navSearchPhys" runat="server">Search</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navAddPhys" runat="server">Add</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navEditPhys" runat="server">Edit</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navDeletePhys" runat="server">Delete</asp:HyperLink>
-				</div>
-
-				<hr class="nav" />
-
-				<h2 class="nav">Drugs</h2>
-				<div class="navblock">
-					<asp:HyperLink class="nav nav-half" ID="navSearchDrug" runat="server">Search</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navAddDrug" runat="server">Add</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navEditDrug" runat="server">Edit</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navDeleteDrug" runat="server">Delete</asp:HyperLink>
-				</div>
-
-				<hr class="nav" />
-
-				<h2 class="nav">Prescriptions</h2>
-				<div class="navblock">
-					<asp:HyperLink class="nav nav-half" ID="navSearchPresc" runat="server">Search</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navAddPresc" runat="server">Add</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navEditPresc" runat="server">Edit</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navDeletePresc" runat="server">Delete</asp:HyperLink>
-				</div>
-
-				<hr class="nav" />
-
-				<h2 class="nav">Refills</h2>
-				<div class="navblock">
-					<asp:HyperLink class="nav nav-half" ID="navSearchRefill" runat="server">Search</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navAddRefill" runat="server">Add</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navEditRefill" runat="server">Edit</asp:HyperLink>
-					<asp:HyperLink class="nav nav-half" ID="navDeleteRefill" runat="server">Delete</asp:HyperLink>
-				</div>
+				<asp:HyperLink CssClass="nav nav-full" ID="navPatients" runat="server" NavigateUrl="patients.aspx">Patients</asp:HyperLink>
+				<asp:HyperLink CssClass="nav nav-full" ID="navPhysicians" runat="server" NavigateUrl="physicians.aspx">Physicians</asp:HyperLink>
+				<asp:HyperLink CssClass="nav nav-full" ID="navDrugs" runat="server" NavigateUrl="drugs.aspx">Drugs</asp:HyperLink>
+				<asp:HyperLink CssClass="nav nav-full" ID="navPrescriptions" runat="server" NavigateUrl="prescriptions.aspx">Prescriptions</asp:HyperLink>
+				<asp:HyperLink CssClass="nav nav-full" ID="navRefills" runat="server" NavigateUrl="refills.aspx">Refills</asp:HyperLink>
 			</nav>
 			<main>
 				<asp:ContentPlaceHolder ID="pageContent" runat="server"></asp:ContentPlaceHolder>

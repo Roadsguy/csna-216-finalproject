@@ -1,5 +1,5 @@
 ﻿body {
-	background-color: aliceblue;
+	background-color: #eeeeee;
 	margin: 0px;
 	padding: 0px;
 }
@@ -31,7 +31,7 @@ header {
 
 nav {
 	padding: 10px;
-	background-color: lightblue;
+	background-color: #96CCFF;
 	flex: 0 0 180px;
 	order: -1;
 	box-sizing: border-box;
@@ -49,7 +49,7 @@ p.sidebar {
 
 a.nav {
 	color: black;
-	height: 28px;
+	height: 40px;
 	padding: 2px 10px;
 	font-size: 18px;
 	text-decoration: none;
@@ -62,6 +62,7 @@ a.nav {
 a.nav-full {
 	width: 100%;
 	display: flex;
+	font-size: 22px;
 }
 
 a.nav-half {
@@ -74,9 +75,9 @@ a.nav-half {
 a.nav-current {
 	color: white;
 	background-color: dodgerblue;
-	height: 28px;
+	height: 40px;
 	padding: 2px 10px;
-	font-size: 18px;
+	font-size: 22px;
 	text-decoration: none;
 	line-height: 0;
 	align-items: center;
@@ -116,3 +117,73 @@ footer {
 	justify-content: center;
 }
 
+.gridview {
+	width: 80%;
+	border: solid 2px dodgerblue;
+	min-width: 80%;
+}
+
+.gridview-header {
+	background-color: dodgerblue;
+	color: White;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.gridview-rows {
+	background-color: #fff;
+	font-size: 14px;
+	color: #000;
+	min-height: 25px;
+	text-align: center;
+}
+
+.gridview-altrows {
+	background-color: #C9E5FF;
+	font-size: 14px;
+	color: black;
+	min-height: 25px;
+	text-align: center;
+}
+
+.gridview-selectedrow {
+	background-color: #ff8000;
+	color: #fff;
+	font-weight: bold;
+	text-align: left;
+}
+
+.gridview a /** FOR THE PAGING ICONS  **/ {
+	background-color: Transparent;
+	padding: 5px 5px 5px 5px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+	.gridview a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
+		background-color: deepskyblue;
+		color: #fff;
+	}
+
+.gridview span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+	background-color: #fff;
+	color: #000;
+	padding: 5px 5px 5px 5px;
+}
+
+.gridview-pager {
+	background-color: #5badff;
+	color: White;
+	height: 30px;
+	text-align: left;
+}
+
+.gridview td {
+	padding: 5px;
+}
+
+.gridview th {
+	padding: 5px;
+}
