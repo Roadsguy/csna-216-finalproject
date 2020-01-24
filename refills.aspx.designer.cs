@@ -11,79 +11,61 @@ namespace FinalProject
 {
 
 
-	public partial class Louis
+	public partial class refills
 	{
 
 		/// <summary>
-		/// head control.
+		/// txtRxNo control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+		protected global::System.Web.UI.WebControls.TextBox txtRxNo;
 
 		/// <summary>
-		/// form1 control.
+		/// txtPatientID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.WebControls.TextBox txtPatientID;
 
 		/// <summary>
-		/// navPatients control.
+		/// txtDrugID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink navPatients;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
 
 		/// <summary>
-		/// navPhysicians control.
+		/// txtPhysicianID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink navPhysicians;
+		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
 
 		/// <summary>
-		/// navDrugs control.
+		/// btnSearch control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink navDrugs;
+		protected global::System.Web.UI.WebControls.Button btnSearch;
 
 		/// <summary>
-		/// navPrescriptions control.
+		/// grdPatients control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink navPrescriptions;
-
-		/// <summary>
-		/// navRefills control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink navRefills;
-
-		/// <summary>
-		/// pageContent control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder pageContent;
+		protected global::System.Web.UI.WebControls.GridView grdPatients;
 	}
 }

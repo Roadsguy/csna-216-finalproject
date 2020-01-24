@@ -12,9 +12,9 @@ namespace FinalProject
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			HyperLink navCurrent = Master.FindControl("navSearchPatient") as HyperLink;
-			navCurrent.Enabled = false;
-			navCurrent.CssClass = "nav-half nav-current";
+			//HyperLink navCurrent = Master.FindControl("navSearchPatient") as HyperLink;
+			//navCurrent.Enabled = false;
+			//navCurrent.CssClass = "nav-half nav-current";
 		}
 	}
 }

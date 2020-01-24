@@ -68,7 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="drugs.aspx" />
     <Content Include="main.css" />
+    <Content Include="patients.aspx" />
+    <Content Include="physicians.aspx" />
+    <Content Include="prescriptions.aspx" />
+    <Content Include="refills.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,6 +85,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="drugs.aspx.cs">
+      <DependentUpon>drugs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs.aspx.designer.cs">
+      <DependentUpon>drugs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,7 +100,35 @@
       <DependentUpon>Louis.master</DependentUpon>
     </Compile>
     <Compile Include="LouisDataTier.cs" />
+    <Compile Include="patients.aspx.cs">
+      <DependentUpon>patients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients.aspx.designer.cs">
+      <DependentUpon>patients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians.aspx.cs">
+      <DependentUpon>physicians.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians.aspx.designer.cs">
+      <DependentUpon>physicians.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prescriptions.aspx.cs">
+      <DependentUpon>prescriptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prescriptions.aspx.designer.cs">
+      <DependentUpon>prescriptions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="refills.aspx.cs">
+      <DependentUpon>refills.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="refills.aspx.designer.cs">
+      <DependentUpon>refills.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
