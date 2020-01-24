@@ -14,7 +14,7 @@ namespace FinalProject
 		{
 			//HyperLink navCurrent = Master.FindControl("navSearchPatient") as HyperLink;
 			//navCurrent.Enabled = false;
-			//navCurrent.CssClass = "nav-half nav-current";
+			//navCurrent.CssClass = "nav-half nav-current"; test
 		}
 	}
 }
