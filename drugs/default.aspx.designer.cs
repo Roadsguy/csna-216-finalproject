@@ -7,39 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject
+namespace FinalProject.drugs
 {
 
 
-	public partial class patients
+	public partial class _default
 	{
 
 		/// <summary>
-		/// txtStudentID control.
+		/// txtDrugID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtStudentID;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
 
 		/// <summary>
-		/// txtFirstName control.
+		/// txtDrugName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugName;
 
 		/// <summary>
-		/// txtLastName control.
+		/// txtDrugDesc control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtLastName;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugDesc;
 
 		/// <summary>
 		/// btnSearch control.

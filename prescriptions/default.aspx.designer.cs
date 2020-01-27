@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject
+namespace FinalProject.prescriptions
 {
 
 
-	public partial class refills
+	public partial class _default
 	{
 
 		/// <summary>

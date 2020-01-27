@@ -7,48 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject
+namespace FinalProject.patients
 {
 
 
-	public partial class prescriptions
+	public partial class patients_search
 	{
 
 		/// <summary>
-		/// txtRxNo control.
+		/// txtStudentID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtRxNo;
+		protected global::System.Web.UI.WebControls.TextBox txtStudentID;
 
 		/// <summary>
-		/// txtPatientID control.
+		/// txtLastName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtPatientID;
+		protected global::System.Web.UI.WebControls.TextBox txtLastName;
 
 		/// <summary>
-		/// txtDrugID control.
+		/// txtFirstName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
-
-		/// <summary>
-		/// txtPhysicianID control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
+		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
 
 		/// <summary>
 		/// btnSearch control.
@@ -58,6 +49,24 @@ namespace FinalProject
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button btnSearch;
+
+		/// <summary>
+		/// btnAdd control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnAdd;
+
+		/// <summary>
+		/// ajaxbtn control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlButton ajaxbtn;
 
 		/// <summary>
 		/// grdPatients control.

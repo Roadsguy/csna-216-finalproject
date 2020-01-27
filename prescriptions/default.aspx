@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="physicians.aspx.cs" Inherits="FinalProject.physicians" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="FinalProject.prescriptions._default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
-	Phsyician ID: <asp:TextBox ID="txtPhysicianID" runat="server"></asp:TextBox><br />
-	First Name: <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox><br />
-	Last Name: <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+	Rx Number: <asp:TextBox ID="txtRxNo" runat="server"></asp:TextBox><br />
+	Patient ID: <asp:TextBox ID="txtPatientID" runat="server"></asp:TextBox><br />
+	Drug ID: <asp:TextBox ID="txtDrugID" runat="server"></asp:TextBox><br />
+	Physician ID: <asp:TextBox ID="txtPhysicianID" runat="server"></asp:TextBox>
 	<br /><br />
 	<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
 	<br /><br />

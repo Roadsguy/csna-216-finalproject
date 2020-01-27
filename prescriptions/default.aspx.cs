@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalProject
+namespace FinalProject.prescriptions
 {
-	public partial class drugs : System.Web.UI.Page
+	public partial class _default : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			HyperLink navCurrent = Master.FindControl("navDrugs") as HyperLink;
+			HyperLink navCurrent = Master.FindControl("navPrescriptions") as HyperLink;
 			navCurrent.Enabled = false;
 			navCurrent.CssClass = "nav-full nav-current";
 		}
@@ -34,7 +34,7 @@ namespace FinalProject
 			}
 			catch
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load drug data')", true);
+				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load prescription data')", true);
 			}
 		}
 	}

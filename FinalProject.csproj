@@ -67,30 +67,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
-    <Content Include="drugs.aspx" />
+    <Content Include="default.aspx" />
+    <Content Include="drugs\default.aspx" />
     <Content Include="main.css" />
-    <Content Include="patients.aspx" />
-    <Content Include="physicians.aspx" />
-    <Content Include="prescriptions.aspx" />
-    <Content Include="refills.aspx" />
+    <Content Include="patients\default.aspx" />
+    <Content Include="patients\patients_search.aspx" />
+    <Content Include="patients\patients_view.aspx" />
+    <Content Include="patients\test.aspx" />
+    <Content Include="patients\testmaster.aspx" />
+    <Content Include="physicians\default.aspx" />
+    <Content Include="prescriptions\default.aspx" />
+    <Content Include="refills\default.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
+    <Content Include="_test.aspx" />
+    <Content Include="_test.html" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="drugs.aspx.cs">
-      <DependentUpon>drugs.aspx</DependentUpon>
+    <Compile Include="drugs\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="drugs.aspx.designer.cs">
-      <DependentUpon>drugs.aspx</DependentUpon>
+    <Compile Include="drugs\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>
@@ -100,34 +106,62 @@
       <DependentUpon>Louis.master</DependentUpon>
     </Compile>
     <Compile Include="LouisDataTier.cs" />
-    <Compile Include="patients.aspx.cs">
-      <DependentUpon>patients.aspx</DependentUpon>
+    <Compile Include="patients\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patients.aspx.designer.cs">
-      <DependentUpon>patients.aspx</DependentUpon>
+    <Compile Include="patients\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="physicians.aspx.cs">
-      <DependentUpon>physicians.aspx</DependentUpon>
+    <Compile Include="patients\patients_search.aspx.cs">
+      <DependentUpon>patients_search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="physicians.aspx.designer.cs">
-      <DependentUpon>physicians.aspx</DependentUpon>
+    <Compile Include="patients\patients_search.aspx.designer.cs">
+      <DependentUpon>patients_search.aspx</DependentUpon>
     </Compile>
-    <Compile Include="prescriptions.aspx.cs">
-      <DependentUpon>prescriptions.aspx</DependentUpon>
+    <Compile Include="patients\patients_view.aspx.cs">
+      <DependentUpon>patients_view.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="prescriptions.aspx.designer.cs">
-      <DependentUpon>prescriptions.aspx</DependentUpon>
+    <Compile Include="patients\patients_view.aspx.designer.cs">
+      <DependentUpon>patients_view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\testmaster.aspx.cs">
+      <DependentUpon>testmaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\testmaster.aspx.designer.cs">
+      <DependentUpon>testmaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prescriptions\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prescriptions\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="refills.aspx.cs">
-      <DependentUpon>refills.aspx</DependentUpon>
+    <Compile Include="refills\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="refills.aspx.designer.cs">
-      <DependentUpon>refills.aspx</DependentUpon>
+    <Compile Include="refills\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
@@ -136,10 +170,22 @@
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_test.aspx.cs">
+      <DependentUpon>_test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_test.aspx.designer.cs">
+      <DependentUpon>_test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Louis.master" />
+    <Content Include="patients\web.config" />
+    <Content Include="drugs\web.config" />
     <None Include="packages.config" />
+    <Content Include="physicians\web.config" />
+    <Content Include="prescriptions\web.config" />
+    <Content Include="refills\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,6 +193,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

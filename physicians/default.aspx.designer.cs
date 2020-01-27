@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject
+namespace FinalProject.physicians
 {
 
 
-	public partial class physicians
+	public partial class _default
 	{
 
 		/// <summary>

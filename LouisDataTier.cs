@@ -69,7 +69,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPatients(string strPatientID, string strFName, string strLName)
+		public DataSet SearchPatients(string strPatientID, string strLName, string strFName)
 		{
 			try
 			{
@@ -87,8 +87,8 @@ namespace FinalProject
 
 				// Define input parameters
 				cmdString.Parameters.Add("@patientID", SqlDbType.VarChar, 8).Value = strPatientID;
-				cmdString.Parameters.Add("@fName", SqlDbType.VarChar, 50).Value = strFName;
 				cmdString.Parameters.Add("@lName", SqlDbType.VarChar, 50).Value = strLName;
+				cmdString.Parameters.Add("@fName", SqlDbType.VarChar, 50).Value = strFName;
 
 				// Adapter and dataset
 				SqlDataAdapter aAdapter = new SqlDataAdapter();
@@ -113,7 +113,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPatientForUpdate(string strPatientID)
+		public DataSet GetPatient(string strPatientID)
 		{
 			try
 			{
