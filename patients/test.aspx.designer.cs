@@ -7,56 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject
+namespace FinalProject.patients
 {
 
 
-	public partial class drugs
+	public partial class test
 	{
 
 		/// <summary>
-		/// txtDrugID control.
+		/// form1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
+		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
-		/// txtDrugName control.
+		/// Button1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugName;
+		protected global::System.Web.UI.WebControls.Button Button1;
 
 		/// <summary>
-		/// txtDrugDesc control.
+		/// Button2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugDesc;
-
-		/// <summary>
-		/// btnSearch control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSearch;
-
-		/// <summary>
-		/// grdPatients control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.Button Button2;
 	}
 }

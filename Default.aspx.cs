@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace FinalProject
 {
-	public partial class Default : System.Web.UI.Page
+	public partial class _default : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

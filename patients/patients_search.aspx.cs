@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Web.Services;
+using System.IO;
 
-namespace FinalProject
+namespace FinalProject.patients
 {
-	public partial class patients : System.Web.UI.Page
+	public partial class patients_search : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -34,7 +36,7 @@ namespace FinalProject
 				// Initiate data tier
 				LouisDataTier aPatient = new LouisDataTier();
 				DataSet ds = new DataSet();
-				ds = aPatient.GetPatients(txtStudentID.Text.Trim(), txtFirstName.Text.Trim(), txtLastName.Text.Trim());
+				ds = aPatient.SearchPatients(txtStudentID.Text.Trim(), txtLastName.Text.Trim(), txtFirstName.Text.Trim());
 
 				// Populate datagrid with dataset
 				grdPatients.DataSource = ds.Tables[0];
@@ -44,6 +46,19 @@ namespace FinalProject
 			{
 				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load patient data')", true);
 			}
+		}
+
+		protected void btnAdd_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		[WebMethod]
+		public static string GetData()
+		{
+			return "Test string from code behind";
+
+
 		}
 	}
 }

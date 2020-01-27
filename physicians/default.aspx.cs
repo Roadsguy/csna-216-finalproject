@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalProject
+namespace FinalProject.physicians
 {
-	public partial class prescriptions : System.Web.UI.Page
+	public partial class _default : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			HyperLink navCurrent = Master.FindControl("navPrescriptions") as HyperLink;
+			HyperLink navCurrent = Master.FindControl("navPhysicians") as HyperLink;
 			navCurrent.Enabled = false;
 			navCurrent.CssClass = "nav-full nav-current";
 		}
@@ -30,11 +30,11 @@ namespace FinalProject
 		{
 			try
 			{
-
+				
 			}
 			catch
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load prescription data')", true);
+				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load physician data')", true);
 			}
 		}
 	}
