@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="drugs\default.aspx" />
+    <Content Include="drugs\drug_add.aspx" />
+    <Content Include="drugs\drug_edit.aspx" />
     <Content Include="main.css" />
     <Content Include="patients\default.aspx" />
     <Content Include="patients\patients_search.aspx" />
@@ -97,6 +99,20 @@
     </Compile>
     <Compile Include="drugs\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drugs\drug_add.aspx.cs">
+      <DependentUpon>drug_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drug_add.aspx.designer.cs">
+      <DependentUpon>drug_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drugs\drug_edit.aspx.cs">
+      <DependentUpon>drug_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drug_edit.aspx.designer.cs">
+      <DependentUpon>drug_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>

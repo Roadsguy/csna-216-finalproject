@@ -527,7 +527,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetDrugs(string strDrugID, string strDrugName, string strDrugDesc)
+		public DataSet SearchDrugs(string strDrugID, string strDrugName, string strDrugDesc)
 		{
 			try
 			{
@@ -571,7 +571,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetDrugForUpdate(string strDrugID)
+		public DataSet GetDrugs(string strDrugID)
 		{
 			try
 			{
