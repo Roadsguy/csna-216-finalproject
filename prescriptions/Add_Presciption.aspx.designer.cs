@@ -10,69 +10,51 @@
 namespace FinalProject.prescriptions {
     
     
-    public partial class _default {
+    public partial class Add_Presciption {
         
         /// <summary>
-        /// txtRxNo control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRxNo;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtPatientID control.
+        /// txtAddRxNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPatientID;
+        protected global::System.Web.UI.WebControls.TextBox txtAddRxNo;
         
         /// <summary>
-        /// txtDrugID control.
+        /// txtAddPatientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDrugID;
+        protected global::System.Web.UI.WebControls.TextBox txtAddPatientID;
         
         /// <summary>
-        /// txtPhysicianID control.
+        /// txtAddDrugID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
+        protected global::System.Web.UI.WebControls.TextBox txtAddDrugID;
         
         /// <summary>
-        /// btnSearch control.
+        /// txtAddDocID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-        
-        /// <summary>
-        /// btnAddPresc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddPresc;
-        
-        /// <summary>
-        /// grdPrescriptions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdPrescriptions;
+        protected global::System.Web.UI.WebControls.TextBox txtAddDocID;
     }
 }

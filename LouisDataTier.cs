@@ -738,7 +738,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPrescriptions(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
+		public DataSet SearchPrescriptions(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
 		{
 			try
 			{
@@ -783,7 +783,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPrescriptionForUpdate(string strRxNo)
+		public DataSet GetPrescription(string strRxNo)
 		{
 			try
 			{

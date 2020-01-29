@@ -76,6 +76,7 @@
     <Content Include="patients\test.aspx" />
     <Content Include="patients\testmaster.aspx" />
     <Content Include="physicians\default.aspx" />
+    <Content Include="prescriptions\Add_Presciption.aspx" />
     <Content Include="prescriptions\default.aspx" />
     <Content Include="refills\default.aspx" />
     <Content Include="test.aspx" />
@@ -147,6 +148,13 @@
     </Compile>
     <Compile Include="physicians\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prescriptions\Add_Presciption.aspx.cs">
+      <DependentUpon>Add_Presciption.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prescriptions\Add_Presciption.aspx.designer.cs">
+      <DependentUpon>Add_Presciption.aspx</DependentUpon>
     </Compile>
     <Compile Include="prescriptions\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
