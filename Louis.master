@@ -17,7 +17,7 @@
 		<div class="mainbody">
 			<nav>
 				<asp:HyperLink CssClass="nav nav-full" ID="navPatients" runat="server" NavigateUrl="/patients">Patients</asp:HyperLink>
-				<asp:HyperLink CssClass="nav nav-full" ID="navPhysicians" runat="server" NavigateUrl="/physicians">Physicians</asp:HyperLink>
+				<asp:HyperLink CssClass="nav nav-full" ID="navPhysicians" runat="server" NavigateUrl="/physicians/physician_view.aspx">Physicians</asp:HyperLink>
 				<asp:HyperLink CssClass="nav nav-full" ID="navDrugs" runat="server" NavigateUrl="/drugs">Drugs</asp:HyperLink>
 				<asp:HyperLink CssClass="nav nav-full" ID="navPrescriptions" runat="server" NavigateUrl="/prescriptions">Prescriptions</asp:HyperLink>
 				<asp:HyperLink CssClass="nav nav-full" ID="navRefills" runat="server" NavigateUrl="/refills">Refills</asp:HyperLink>

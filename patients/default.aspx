@@ -3,39 +3,36 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
 	<script type="text/javascript"> 
-		function loadDoc() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function () {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("content").innerHTML = this.responseText;
-				}
-			};
-			xhttp.open("GET", "patients_add.txt", true);
-			xhttp.send();
-		}
-
-		function ajaxTest() {
-			$.ajax({
-				type: "POST",
-				url: "/patients/GetData",
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (response) {
-					$("#content").text(response.d);
-				},
-				failure: function (response) {
-					alert(response.d);
-				}
-			});
-		}
-
-		function goToView() {
-			$('#content').load('/patients/patients_view.aspx #content', { ID: 'S0001' });
-		}
-
-		function goToSearch() {
-			$('#content').load('/patients/default.aspx #content', { refresh: 'true' });
-		}
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "patients_add.txt", true);
+            xhttp.send();
+        }
+        function ajaxTest() {
+            $.ajax({
+                type: "POST",
+                url: "/patients/GetData",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $("#content").text(response.d);
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+        function goToView() {
+            $('#content').load('/patients/patients_view.aspx #content', { ID: 'S0001' });
+        }
+        function goToSearch() {
+            $('#content').load('/patients/default.aspx #content', { refresh: 'true' });
+        }
 	</script>
 	<div id="content">
 		Patient ID: <asp:TextBox ID="txtPatientID" runat="server"></asp:TextBox><br />
