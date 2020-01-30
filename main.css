@@ -187,3 +187,7 @@ footer {
 .gridview th {
 	padding: 5px;
 }
+
+h2.pageheader {
+	text-align: center;
+}

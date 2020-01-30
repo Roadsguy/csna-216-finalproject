@@ -11,61 +11,61 @@ namespace FinalProject.patients
 {
 
 
-	public partial class _default
+	public partial class ajaxtest
 	{
 
 		/// <summary>
-		/// txtSrchPatientID control.
+		/// form1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
+		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
-		/// txtSrchLastName control.
+		/// ScriptManager1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+		protected global::System.Web.UI.ScriptManager ScriptManager1;
 
 		/// <summary>
-		/// txtSrchFirstName control.
+		/// UpdatePanel1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
+		protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
 		/// <summary>
-		/// btnSearch control.
+		/// btnPostBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSearch;
+		protected global::System.Web.UI.WebControls.Button btnPostBack;
 
 		/// <summary>
-		/// btnAdd control.
+		/// btnTest control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnAdd;
+		protected global::System.Web.UI.WebControls.Button btnTest;
 
 		/// <summary>
-		/// grdPatients control.
+		/// lblTest control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.Label lblTest;
 	}
 }
