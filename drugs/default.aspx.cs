@@ -47,5 +47,10 @@ namespace FinalProject.drugs
 				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load drug data')", true);
 			}
 		}
+
+		protected void btnAddDrug_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

@@ -13,5 +13,10 @@ namespace FinalProject.drugs
         {
 
         }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

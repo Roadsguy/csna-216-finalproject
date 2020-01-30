@@ -1,5 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="FinalProject.drugs._default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+	<script language="javascript" type="text/javascript">
+
+        function ShowMap()
+        {
+            var map = null;
+            var features = "width=220,height=250"
+            features += ",left=50,top=50,resize=yes,menu=no,status"
+            map = window.open("drug_add.aspx", "mapwin", features);
+            map.focus();
+        }
+	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
 	Drug ID: <asp:TextBox ID="txtDrugID" runat="server"></asp:TextBox><br />
@@ -8,7 +19,7 @@
 	<br /><br />
 	<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
 	&nbsp;
-    <asp:Button ID="btnAddDrug" runat="server" Text="Add Drug" />
+    <asp:Button ID="btnAddDrug" runat="server" Text="Add Drug" OnClick="btnAddDrug_Click" OnClientClick="ShowMap(this)" />
 	<br /><br />
 	<asp:GridView ID="grdDrugs" AutoGenerateColumns="False" CssClass="gridview" runat="server" Width="100%" AllowPaging="True" AllowSorting="True" ShowHeaderWhenEmpty="True"
 			PagerStyle-CssClass="gridview-pager" HeaderStyle-CssClass="gridview-header" RowStyle-CssClass="gridview-rows">
