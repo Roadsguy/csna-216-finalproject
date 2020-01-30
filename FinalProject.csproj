@@ -84,6 +84,9 @@
     <Content Include="patients\test.aspx" />
     <Content Include="patients\testmaster.aspx" />
     <Content Include="physicians\default.aspx" />
+    <Content Include="physicians\Physician_add.aspx" />
+    <Content Include="physicians\Physician_edit.aspx" />
+    <Content Include="physicians\Physician_view.aspx" />
     <Content Include="prescriptions\default.aspx" />
     <Content Include="refills\default.aspx" />
     <Content Include="State.xml" />
@@ -165,6 +168,27 @@
     </Compile>
     <Compile Include="physicians\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\Physician_add.aspx.cs">
+      <DependentUpon>Physician_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\Physician_add.aspx.designer.cs">
+      <DependentUpon>Physician_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\Physician_edit.aspx.cs">
+      <DependentUpon>Physician_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\Physician_edit.aspx.designer.cs">
+      <DependentUpon>Physician_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\Physician_view.aspx.cs">
+      <DependentUpon>Physician_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\Physician_view.aspx.designer.cs">
+      <DependentUpon>Physician_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="prescriptions\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
