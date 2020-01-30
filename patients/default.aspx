@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="FinalProject.patients._default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="CC1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
@@ -29,8 +30,53 @@
 			});
 		}
 
-		function goToView() {
-			$('#content').load('/patients/patients_view.aspx #content', { ID: 'S0001' });
+		function goToView(sender, rowPatientID) {
+			var vpatientID = $("#<%=txtSrchPatientID.ClientID %>").val();
+			var vlastName = $("#<%=txtSrchLastName.ClientID %>").val();
+			var vfirstName = $("#<%=txtSrchFirstName.ClientID %>").val();
+
+			var senderID = $(sender).attr('id');
+			var viewType;
+
+			switch (senderID) {
+				case "imgBtnView":
+					viewType = "<% =cipher.Encrypt("view") %>";
+					break;
+				case "imgBtnEdit":
+					viewType = "<% =cipher.Encrypt("edit") %>";
+					break;
+				case "btnAdd":
+					viewType = "<% =cipher.Encrypt("add") %>";
+					break;
+				default:
+					alert('Invalid senderID: ' + senderID);
+					return false;
+			};
+
+			$.ajax({
+				type: "POST",
+				url: "default.aspx/SrchPatSaveSession",
+				contentType: "application/json; charset=utf-8",
+				data: JSON.stringify({ "patientID": vpatientID, "lastName": vlastName, "firstName": vfirstName }),
+				dataType: "json",
+				success: function () {
+					//alert('It works!');
+					switch (senderID) {
+						case "imgBtnView":
+						case "imgBtnEdit":
+							$('#content').load('/patients/patients_vieweditadd.aspx #content', { type: viewType, ID: rowPatientID });
+							break;
+						case "btnAdd":
+							$('#content').load('/patients/patients_vieweditadd.aspx #content', { type: viewType });
+							break;
+					}
+				},
+				error: function () {
+					alert('failed');
+				}
+			});
+
+			//$('#content').load('/patients/patients_vieweditadd.aspx #content', { ID: 'S0001' });
 		}
 
 		function goToSearch() {
@@ -38,20 +84,24 @@
 		}
 	</script>
 	<div id="content">
-		Patient ID: <asp:TextBox ID="txtPatientID" runat="server"></asp:TextBox><br />
+		<script>
+			$(function () {
+				$("#txtSrchPatientID").datepicker();
+			});
+		</script>
+
+		Patient ID: <asp:TextBox ID="txtSrchPatientID" runat="server" ClientIDMode="static" data-lpignore="true"></asp:TextBox><br />
 		Last Name:
-		<asp:TextBox ID="txtLastName" runat="server"></asp:TextBox><br />
+		<asp:TextBox ID="txtSrchLastName" runat="server" data-lpignore="true"></asp:TextBox><br />
 		First Name:
-		<asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+		<asp:TextBox ID="txtSrchFirstName" runat="server" data-lpignore="true"></asp:TextBox>
 		<br />
 		<br />
-		<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnAdd" runat="server" Text="Add Patient" PostBackUrl="Default.aspx" />
+		<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<asp:Button ID="btnAdd" ClientIDMode="static" runat="server" Text="Add Patient" OnClientClick="goToView(this); return false;" />
 		<br />
 		<br />
-		<button id="ajaxbtn" type="button" runat="server" onclick="goToView()">Change Content</button>
-		<br />
-		<br />
-		<asp:GridView ID="grdPatients" AutoGenerateColumns="False" CssClass="gridview" runat="server" Width="100%" AllowPaging="True" AllowSorting="True" ShowHeaderWhenEmpty="True"
+		<asp:GridView ID="grdPatients" AutoGenerateColumns="False" CssClass="gridview" runat="server" Width="100%" AllowPaging="True" AllowSorting="True" OnSorting="grdPatients_Sorting" ShowHeaderWhenEmpty="True"
 			PagerStyle-CssClass="gridview-pager" HeaderStyle-CssClass="gridview-header" RowStyle-CssClass="gridview-rows">
 
 			<HeaderStyle CssClass="gridview-header"></HeaderStyle>
@@ -77,13 +127,16 @@
 				<asp:BoundField DataField="dateOfBirth" HeaderText="Date of Birth" SortExpression="dateOfBirth" DataFormatString="{0:yyyy-MM-dd}" />
 				<asp:BoundField DataField="acctBalance" HeaderText="Account Balance" SortExpression="acctBalance" DataFormatString="{0:C}" />
 				<asp:BoundField DataField="insuranceCo" HeaderText="Insurance" SortExpression="insuranceCo" />
-				<asp:HyperLinkField DataNavigateUrlFields="patientID" DataNavigateUrlFormatString="Display.aspx?ID={0}" HeaderText="View" Text="View" Target="_blank" />
-				<asp:TemplateField HeaderText="Edit">
+				<asp:TemplateField HeaderText="">
 					<ItemTemplate>
-						<asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<% # Eval("patientID") %>'
-							OnCommand="Delete_Click" CommandName="lbtnDelete" ImageUrl="~/images/delete.svg" Height="24" />||
-					<asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<% # Eval("patientID") %>'
-						OnCommand="Edit_Click" CommandName="lbtnEdit" ImageUrl="~/images/edit.svg" Height="24" />
+						<asp:ImageButton ID="imgBtnView" ClientIDMode="static" runat="server" src="/images/view.svg" Height="24"
+							OnClick=<%# "goToView(this, '" + cipher.Encrypt(Eval("patientID").ToString()) + "');return false;" %> ToolTip="View Record" />
+						&nbsp;&nbsp;
+						<asp:ImageButton ID="imgBtnDelete" ClientIDMode="static" runat="server" CommandArgument='<% # Eval("patientID") %>'
+							OnCommand="Delete_Click" CommandName="lbtnDelete" ImageUrl="/images/delete.svg" Height="24" ToolTip="Delete Record" />
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<asp:ImageButton ID="imgBtnEdit" ClientIDMode="static" runat="server" src="/images/edit.svg" height="24"
+							OnClick=<%# "goToView(this, '" + cipher.Encrypt(Eval("patientID").ToString()) + "');return false;" %> ToolTip="Edit Record" />
 					</ItemTemplate>
 					<HeaderStyle HorizontalAlign="Left" />
 				</asp:TemplateField>

@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>packages\AjaxControlToolkit.19.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -69,15 +72,21 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="drugs\default.aspx" />
+    <Content Include="images\delete.svg" />
+    <Content Include="images\edit.svg" />
+    <Content Include="images\view.svg" />
+    <Content Include="jquery-3.4.1.js" />
     <Content Include="main.css" />
+    <Content Include="patients\ajaxtest.aspx" />
     <Content Include="patients\default.aspx" />
     <Content Include="patients\patients_search.aspx" />
-    <Content Include="patients\patients_view.aspx" />
+    <Content Include="patients\patients_vieweditadd.aspx" />
     <Content Include="patients\test.aspx" />
     <Content Include="patients\testmaster.aspx" />
     <Content Include="physicians\default.aspx" />
     <Content Include="prescriptions\default.aspx" />
     <Content Include="refills\default.aspx" />
+    <Content Include="State.xml" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
     <Content Include="_test.aspx" />
@@ -98,6 +107,8 @@
     <Compile Include="drugs\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\encryption.cs" />
+    <Compile Include="App_Code\gridviewcode.cs" />
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,7 +116,14 @@
     <Compile Include="Louis.master.designer.cs">
       <DependentUpon>Louis.master</DependentUpon>
     </Compile>
-    <Compile Include="LouisDataTier.cs" />
+    <Compile Include="App_Code\LouisDataTier.cs" />
+    <Compile Include="patients\ajaxtest.aspx.cs">
+      <DependentUpon>ajaxtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\ajaxtest.aspx.designer.cs">
+      <DependentUpon>ajaxtest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patients\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -120,12 +138,12 @@
     <Compile Include="patients\patients_search.aspx.designer.cs">
       <DependentUpon>patients_search.aspx</DependentUpon>
     </Compile>
-    <Compile Include="patients\patients_view.aspx.cs">
-      <DependentUpon>patients_view.aspx</DependentUpon>
+    <Compile Include="patients\patients_vieweditadd.aspx.cs">
+      <DependentUpon>patients_vieweditadd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patients\patients_view.aspx.designer.cs">
-      <DependentUpon>patients_view.aspx</DependentUpon>
+    <Compile Include="patients\patients_vieweditadd.aspx.designer.cs">
+      <DependentUpon>patients_vieweditadd.aspx</DependentUpon>
     </Compile>
     <Compile Include="patients\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
@@ -163,6 +181,8 @@
     <Compile Include="refills\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="state.cs" />
+    <Compile Include="StateManager.cs" />
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,6 +206,7 @@
     <Content Include="physicians\web.config" />
     <Content Include="prescriptions\web.config" />
     <Content Include="refills\web.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
