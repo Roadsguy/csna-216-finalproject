@@ -305,7 +305,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPhysicians(string strPhysicianID, string strFName, string strLName, string strEmployer)
+		public DataSet SearchPhysicians(string strPhysicianID, string strFName, string strLName, string strEmployer)
 		{
 			try
 			{
@@ -350,7 +350,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPhysicianForUpdate(string strPhysicianID)
+		public DataSet GetPhysician(string strPhysicianID)
 		{
 			try
 			{
@@ -527,7 +527,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetDrugs(string strDrugID, string strDrugName, string strDrugDesc)
+		public DataSet SearchDrugs(string strDrugID, string strDrugName, string strDrugDesc)
 		{
 			try
 			{
@@ -571,7 +571,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetDrugForUpdate(string strDrugID)
+		public DataSet GetDrug(string strDrugID)
 		{
 			try
 			{
@@ -738,7 +738,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPrescriptions(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
+		public DataSet SearchPrescriptions(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
 		{
 			try
 			{
@@ -783,7 +783,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetPrescriptionForUpdate(string strRxNo)
+		public DataSet GetPrescription(string strRxNo)
 		{
 			try
 			{
@@ -948,7 +948,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetRefills(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
+		public DataSet SearchRefills(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
 		{
 			try
 			{
@@ -993,7 +993,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet GetRefillForUpdate(string strRxNo, string strRefillNo)
+		public DataSet GetRefill(string strRxNo, string strRefillNo)
 		{
 			try
 			{

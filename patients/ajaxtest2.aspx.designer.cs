@@ -11,7 +11,7 @@ namespace FinalProject.patients
 {
 
 
-	public partial class ajaxtest
+	public partial class ajaxtest2
 	{
 
 		/// <summary>
@@ -33,57 +33,21 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.ScriptManager ScriptManager1;
 
 		/// <summary>
-		/// updTest control.
+		/// UpdatePanel1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel updTest;
+		protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
 		/// <summary>
-		/// updTest2 control.
+		/// btnPostBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel updTest2;
-
-		/// <summary>
-		/// test2 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::FinalProject.patients.UCtest2 test2;
-
-		/// <summary>
-		/// updClear control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel updClear;
-
-		/// <summary>
-		/// btnClear control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClear;
-
-		/// <summary>
-		/// btnLoad control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnLoad;
+		protected global::System.Web.UI.WebControls.Button btnPostBack;
 	}
 }
