@@ -5,6 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="pageContent" runat="server">
 	<div id="content">
-		potato
+
 	</div>
 </asp:Content>
