@@ -72,6 +72,8 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="drugs\default.aspx" />
+    <Content Include="drugs\drug_add.aspx" />
+    <Content Include="drugs\drug_edit.aspx" />
     <Content Include="images\delete.svg" />
     <Content Include="images\edit.svg" />
     <Content Include="images\view.svg" />
@@ -84,7 +86,11 @@
     <Content Include="patients\test.aspx" />
     <Content Include="patients\testmaster.aspx" />
     <Content Include="physicians\default.aspx" />
+    <Content Include="physicians\physician_add.aspx" />
+    <Content Include="physicians\physician_edit.aspx" />
+    <Content Include="physicians\physician_view.aspx" />
     <Content Include="prescriptions\default.aspx" />
+    <Content Include="prescriptions\prescription_add.aspx" />
     <Content Include="refills\default.aspx" />
     <Content Include="State.xml" />
     <Content Include="test.aspx" />
@@ -109,6 +115,20 @@
     </Compile>
     <Compile Include="App_Code\encryption.cs" />
     <Compile Include="App_Code\gridviewcode.cs" />
+    <Compile Include="drugs\drug_add.aspx.cs">
+      <DependentUpon>drug_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drug_add.aspx.designer.cs">
+      <DependentUpon>drug_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drugs\drug_edit.aspx.cs">
+      <DependentUpon>drug_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drug_edit.aspx.designer.cs">
+      <DependentUpon>drug_edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -166,12 +186,40 @@
     <Compile Include="physicians\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="physicians\physician_add.aspx.cs">
+      <DependentUpon>physician_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\physician_add.aspx.designer.cs">
+      <DependentUpon>physician_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\physician_edit.aspx.cs">
+      <DependentUpon>physician_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\physician_edit.aspx.designer.cs">
+      <DependentUpon>physician_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="physicians\physician_view.aspx.cs">
+      <DependentUpon>physician_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="physicians\physician_view.aspx.designer.cs">
+      <DependentUpon>physician_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="prescriptions\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="prescriptions\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prescriptions\prescription_add.aspx.cs">
+      <DependentUpon>prescription_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prescriptions\prescription_add.aspx.designer.cs">
+      <DependentUpon>prescription_add.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="refills\default.aspx.cs">

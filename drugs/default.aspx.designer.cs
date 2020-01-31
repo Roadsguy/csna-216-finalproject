@@ -51,12 +51,21 @@ namespace FinalProject.drugs
 		protected global::System.Web.UI.WebControls.Button btnSearch;
 
 		/// <summary>
-		/// grdPatients control.
+		/// btnAddDrug control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.Button btnAddDrug;
+
+		/// <summary>
+		/// grdDrugs control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.GridView grdDrugs;
 	}
 }

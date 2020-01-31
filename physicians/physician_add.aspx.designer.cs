@@ -7,65 +7,74 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.patients
+namespace FinalProject.physicians
 {
 
 
-	public partial class _default
+	public partial class physician_add
 	{
 
 		/// <summary>
-		/// txtSrchPatientID control.
+		/// form1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
+		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
-		/// txtSrchLastName control.
+		/// Fname control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+		protected global::System.Web.UI.WebControls.TextBox Fname;
 
 		/// <summary>
-		/// txtSrchFirstName control.
+		/// Lname control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
+		protected global::System.Web.UI.WebControls.TextBox Lname;
 
 		/// <summary>
-		/// btnSearch control.
+		/// MI control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSearch;
+		protected global::System.Web.UI.WebControls.TextBox MI;
 
 		/// <summary>
-		/// btnAdd control.
+		/// Gender control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnAdd;
+		protected global::System.Web.UI.WebControls.TextBox Gender;
 
 		/// <summary>
-		/// grdPatients control.
+		/// DOB control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.TextBox DOB;
+
+		/// <summary>
+		/// btnClose control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnClose;
 	}
 }
