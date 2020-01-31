@@ -33,39 +33,57 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.ScriptManager ScriptManager1;
 
 		/// <summary>
-		/// UpdatePanel1 control.
+		/// updTest control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+		protected global::System.Web.UI.UpdatePanel updTest;
 
 		/// <summary>
-		/// btnPostBack control.
+		/// updTest2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnPostBack;
+		protected global::System.Web.UI.UpdatePanel updTest2;
 
 		/// <summary>
-		/// btnTest control.
+		/// test2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnTest;
+		protected global::FinalProject.patients.UCtest2 test2;
 
 		/// <summary>
-		/// lblTest control.
+		/// updClear control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label lblTest;
+		protected global::System.Web.UI.UpdatePanel updClear;
+
+		/// <summary>
+		/// btnClear control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnClear;
+
+		/// <summary>
+		/// btnLoad control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnLoad;
 	}
 }

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.physicians
+namespace FinalProject.patients
 {
 
 
-	public partial class physician_add
+	public partial class ajaxtest2
 	{
 
 		/// <summary>
@@ -24,57 +24,30 @@ namespace FinalProject.physicians
 		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
-		/// Fname control.
+		/// ScriptManager1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Fname;
+		protected global::System.Web.UI.ScriptManager ScriptManager1;
 
 		/// <summary>
-		/// Lname control.
+		/// UpdatePanel1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Lname;
+		protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
 		/// <summary>
-		/// MI control.
+		/// btnPostBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox MI;
-
-		/// <summary>
-		/// Gender control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Gender;
-
-		/// <summary>
-		/// DOB control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox DOB;
-
-		/// <summary>
-		/// btnClose control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClose;
+		protected global::System.Web.UI.WebControls.Button btnPostBack;
 	}
 }

@@ -76,7 +76,7 @@ namespace FinalProject
 				// Initiate datatier
 				LouisDataTier aDrug = new LouisDataTier();
 				DataSet ds = new DataSet();
-				ds = aDrug.GetDrugs(strDrugID, strDrugName, strDrugDesc);
+				ds = aDrug.SearchDrugs(strDrugID, strDrugName, strDrugDesc);
 
 				// Populate datagrid with dataset
 				GridView1.DataSource = ds.Tables[0];

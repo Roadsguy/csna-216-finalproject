@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ajaxtest.aspx.cs" Inherits="FinalProject.patients.ajaxtest" %>
+<%@ Register src="UCtest1.ascx" TagName="test1" TagPrefix="test1" %>
+<%@ Register src="UCtest2.ascx" tagname="test2" tagprefix="test2" %>
 
 <!DOCTYPE html>
 
@@ -16,23 +18,33 @@
 		function clicked() {
 			alert("Clicked Me!");
 		}
+
+		function loadMe() {
+			$('#UpdatePanel1').load('/patients/ajaxtest2.aspx #UpdatePanel1');
+		}
 	</script>
 </head>
 <body>
 	<form id="form1" runat="server">
-		<asp:ScriptManager ID="ScriptManager1" runat="server">
-		</asp:ScriptManager>
-		<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+		<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+		<asp:UpdatePanel runat="server" ID="updTest">
 			<ContentTemplate>
-				<script type="text/javascript">
-					Sys.Application.add_load(jScript);
-				</script>
-				<asp:Button ID="btnPostBack" runat="server"
-					OnClick="btnPostBack_Click" Text="Click To Postback" />
-				<a href="#" id="click" onclick="clicked()">Click Me!</a>
+
 			</ContentTemplate>
 		</asp:UpdatePanel>
-		<asp:Button ID="btnTest" runat="server" Text="Button" OnClick="btnTest_Click" /><asp:Label ID="lblTest" runat="server" Text="text"></asp:Label>
+
+		<asp:UpdatePanel ID="updTest2" runat="server">
+			<ContentTemplate>
+				<test2:test2 runat="server" ID="test2"></test2:test2>
+			</ContentTemplate>
+		</asp:UpdatePanel>
+
+		<asp:UpdatePanel ID="updClear" runat="server">
+			<ContentTemplate>
+				<asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" />
+				<asp:Button ID="btnLoad" runat="server" Text="Load Test" OnClick="btnLoad_Click" />
+			</ContentTemplate>
+		</asp:UpdatePanel>
 	</form>
 </body>
 </html>

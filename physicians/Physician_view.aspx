@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="Physician_view.aspx.cs" Inherits="FinalProject.physicians.Physician_view" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="Physician_view.aspx.cs" Inherits="FinalProject.physicians.physician_view" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<script type="text/javascript">
         function ShowMap()
@@ -6,7 +6,7 @@
             var map = null;
             var features = "width=220,height=250"
             features += "left=50,top=50,resize=yes,menu=no,status"
-            map = window.open("Physician_add.aspx", "mapwin", features);
+            map = window.open("physician_add.aspx", "mapwin", features);
             map.focus();
         }
 	</script>

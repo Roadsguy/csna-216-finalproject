@@ -24,7 +24,7 @@ namespace FinalProject.physicians
 				// Initiate data tier
 				LouisDataTier aPhysician = new LouisDataTier();
 				DataSet ds = new DataSet();
-				ds = aPhysician.GetPhysicians(txtPhysicianID.Text.Trim(), txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtEmployer.Text.Trim());
+				ds = aPhysician.SearchPhysicians(txtPhysicianID.Text.Trim(), txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtEmployer.Text.Trim());
 
 				// Populate datagrid with dataset
 				grdPhysicians.DataSource = ds.Tables[0];

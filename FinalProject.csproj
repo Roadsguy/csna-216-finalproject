@@ -80,11 +80,14 @@
     <Content Include="jquery-3.4.1.js" />
     <Content Include="main.css" />
     <Content Include="patients\ajaxtest.aspx" />
+    <Content Include="patients\ajaxtest2.aspx" />
     <Content Include="patients\default.aspx" />
     <Content Include="patients\patients_search.aspx" />
     <Content Include="patients\patients_vieweditadd.aspx" />
     <Content Include="patients\test.aspx" />
     <Content Include="patients\testmaster.aspx" />
+    <Content Include="patients\UCtest1.ascx" />
+    <Content Include="patients\UCtest2.ascx" />
     <Content Include="physicians\default.aspx" />
     <Content Include="physicians\physician_add.aspx" />
     <Content Include="physicians\physician_edit.aspx" />
@@ -144,6 +147,13 @@
     <Compile Include="patients\ajaxtest.aspx.designer.cs">
       <DependentUpon>ajaxtest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="patients\ajaxtest2.aspx.cs">
+      <DependentUpon>ajaxtest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\ajaxtest2.aspx.designer.cs">
+      <DependentUpon>ajaxtest2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patients\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,6 +188,20 @@
     </Compile>
     <Compile Include="patients\testmaster.aspx.designer.cs">
       <DependentUpon>testmaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\UCtest1.ascx.cs">
+      <DependentUpon>UCtest1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\UCtest1.ascx.designer.cs">
+      <DependentUpon>UCtest1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="patients\UCtest2.ascx.cs">
+      <DependentUpon>UCtest2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patients\UCtest2.ascx.designer.cs">
+      <DependentUpon>UCtest2.ascx</DependentUpon>
     </Compile>
     <Compile Include="physicians\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
