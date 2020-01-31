@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="physician_edit.aspx.cs" Inherits="FinalProject.physician.physician_edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="physician_edit.aspx.cs" Inherits="FinalProject.physicians.physician_edit" %>
 
 <!DOCTYPE html>
 

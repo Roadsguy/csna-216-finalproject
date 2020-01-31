@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalProject.physician
+namespace FinalProject.physicians
 {
 	public partial class _default : System.Web.UI.Page
 	{

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.physician
+namespace FinalProject.physicians
 {
 
 
