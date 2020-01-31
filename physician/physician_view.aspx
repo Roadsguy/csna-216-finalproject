@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="Physician_view.aspx.cs" Inherits="FinalProject.physicians.physician_view" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="physician_view.aspx.cs" Inherits="FinalProject.physician.physician_view" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<script type="text/javascript">
         function ShowMap()

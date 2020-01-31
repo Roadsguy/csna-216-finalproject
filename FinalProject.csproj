@@ -88,10 +88,10 @@
     <Content Include="patients\testmaster.aspx" />
     <Content Include="patients\UCtest1.ascx" />
     <Content Include="patients\UCtest2.ascx" />
-    <Content Include="physicians\default.aspx" />
-    <Content Include="physicians\physician_add2.aspx" />
-    <Content Include="physicians\physician_edit2.aspx" />
-    <Content Include="physicians\physician_view2.aspx" />
+    <Content Include="physician\default.aspx" />
+    <Content Include="physician\physician_add.aspx" />
+    <Content Include="physician\physician_edit.aspx" />
+    <Content Include="physician\physician_view.aspx" />
     <Content Include="prescriptions\default.aspx" />
     <Content Include="prescriptions\prescription_add.aspx" />
     <Content Include="refills\default.aspx" />
@@ -203,33 +203,33 @@
     <Compile Include="patients\UCtest2.ascx.designer.cs">
       <DependentUpon>UCtest2.ascx</DependentUpon>
     </Compile>
-    <Compile Include="physicians\default.aspx.cs">
+    <Compile Include="physician\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="physicians\default.aspx.designer.cs">
+    <Compile Include="physician\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="physicians\physician_add2.aspx.cs">
-      <DependentUpon>physician_add2.aspx</DependentUpon>
+    <Compile Include="physician\physician_add.aspx.cs">
+      <DependentUpon>physician_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="physicians\physician_add2.aspx.designer.cs">
-      <DependentUpon>physician_add2.aspx</DependentUpon>
+    <Compile Include="physician\physician_add.aspx.designer.cs">
+      <DependentUpon>physician_add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="physicians\physician_edit2.aspx.cs">
-      <DependentUpon>physician_edit2.aspx</DependentUpon>
+    <Compile Include="physician\physician_edit.aspx.cs">
+      <DependentUpon>physician_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="physicians\physician_edit2.aspx.designer.cs">
-      <DependentUpon>physician_edit2.aspx</DependentUpon>
+    <Compile Include="physician\physician_edit.aspx.designer.cs">
+      <DependentUpon>physician_edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="physicians\physician_view2.aspx.cs">
-      <DependentUpon>physician_view2.aspx</DependentUpon>
+    <Compile Include="physician\physician_view.aspx.cs">
+      <DependentUpon>physician_view.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="physicians\physician_view2.aspx.designer.cs">
-      <DependentUpon>physician_view2.aspx</DependentUpon>
+    <Compile Include="physician\physician_view.aspx.designer.cs">
+      <DependentUpon>physician_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="prescriptions\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -275,7 +275,6 @@
     <Content Include="patients\web.config" />
     <Content Include="drugs\web.config" />
     <None Include="packages.config" />
-    <Content Include="physicians\web.config" />
     <Content Include="prescriptions\web.config" />
     <Content Include="refills\web.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />

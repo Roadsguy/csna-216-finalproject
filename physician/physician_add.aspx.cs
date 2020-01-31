@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalProject.physicians
+namespace FinalProject.physician
 {
 	public partial class physician_add : System.Web.UI.Page
 	{

@@ -8,7 +8,7 @@ using System.Data;
 using System.Web.Services;
 using System.IO;
 
-namespace FinalProject.physicians
+namespace FinalProject.physician
 {
 	public partial class physician_view : System.Web.UI.Page
 	{

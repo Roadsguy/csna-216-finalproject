@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.physicians
+namespace FinalProject.physician
 {
 
 
-	public partial class physician_add
+	public partial class physician_edit
 	{
 
 		/// <summary>
@@ -67,6 +67,15 @@ namespace FinalProject.physicians
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox DOB;
+
+		/// <summary>
+		/// btnSave control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnSave;
 
 		/// <summary>
 		/// btnClose control.
