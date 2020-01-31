@@ -60,12 +60,21 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.Button btnSearch;
 
 		/// <summary>
-		/// grdPatients control.
+		/// btnAddPresc control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.Button btnAddPresc;
+
+		/// <summary>
+		/// grdPrescriptions control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.GridView grdPrescriptions;
 	}
 }

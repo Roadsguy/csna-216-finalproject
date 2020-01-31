@@ -7,39 +7,48 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.drugs
+namespace FinalProject.physicians
 {
 
 
-	public partial class _default
+	public partial class physician_view
 	{
 
 		/// <summary>
-		/// txtDrugID control.
+		/// txtPhysicianID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
+		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
 
 		/// <summary>
-		/// txtDrugName control.
+		/// txtLastName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugName;
+		protected global::System.Web.UI.WebControls.TextBox txtLastName;
 
 		/// <summary>
-		/// txtDrugDesc control.
+		/// txtFirstName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtDrugDesc;
+		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
+
+		/// <summary>
+		/// txtEmployer control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtEmployer;
 
 		/// <summary>
 		/// btnSearch control.
@@ -51,21 +60,21 @@ namespace FinalProject.drugs
 		protected global::System.Web.UI.WebControls.Button btnSearch;
 
 		/// <summary>
-		/// btnAddDrug control.
+		/// btnAdd control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnAddDrug;
+		protected global::System.Web.UI.WebControls.Button btnAdd;
 
 		/// <summary>
-		/// grdDrugs control.
+		/// grdPhysicians control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdDrugs;
+		protected global::System.Web.UI.WebControls.GridView grdPhysicians;
 	}
 }
