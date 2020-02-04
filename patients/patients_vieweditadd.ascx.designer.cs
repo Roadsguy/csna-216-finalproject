@@ -78,6 +78,15 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.RadioButton rdoGenderF;
 
 		/// <summary>
+		/// calDOB control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::AjaxControlToolkit.CalendarExtender calDOB;
+
+		/// <summary>
 		/// txtDateOfBirth control.
 		/// </summary>
 		/// <remarks>
@@ -192,7 +201,7 @@ namespace FinalProject.patients
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnGoBack;
+		protected global::System.Web.UI.WebControls.LinkButton btnGoBack;
 
 		/// <summary>
 		/// btnSubmit control.
@@ -201,6 +210,6 @@ namespace FinalProject.patients
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSubmit;
+		protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
 	}
 }

@@ -76,6 +76,18 @@ namespace FinalProject.patients
 			grdPatients.DataSource = patientData.Tables[0];
 			grdPatients.DataBind();
 
+			// Show/Enable Delete Selected button if table has rows
+			if (grdPatients.Rows.Count > 0)
+			{
+				btnDeleteChecked.Enabled = true;
+				btnDeleteChecked.Visible = true;
+			}
+			else // Table empty, hide Delete Selected button
+			{
+				btnDeleteChecked.Enabled = false;
+				btnDeleteChecked.Visible = false;
+			}
+
 			Session["srchPatGridData"] = patientData;
 			Session["srchPatHasSearched"] = "true";
 
@@ -189,7 +201,14 @@ namespace FinalProject.patients
 
 		protected void grdPatients_PageIndexChanging(object sender, GridViewPageEventArgs e)
 		{
+			int pageNum = e.NewPageIndex;
+			Paging(pageNum);
+		}
 
+		private void Paging(int page)
+		{
+			grdPatients.PageIndex = page;
+			PopulateGridView();
 		}
 
 		protected void grdPatients_Sorting(object sender, GridViewSortEventArgs e)

@@ -73,6 +73,8 @@
     <Content Include="default.aspx" />
     <Content Include="deleteconfirm.ascx" />
     <Content Include="drugs\default.aspx" />
+    <Content Include="drugs\drugs_search.ascx" />
+    <Content Include="drugs\drugs_vieweditadd.ascx" />
     <Content Include="drugs\drug_add.aspx" />
     <Content Include="drugs\drug_edit.aspx" />
     <Content Include="images\delete.svg" />
@@ -117,6 +119,20 @@
     </Compile>
     <Compile Include="App_Code\encryption.cs" />
     <Compile Include="App_Code\gridviewcode.cs" />
+    <Compile Include="drugs\drugs_search.ascx.cs">
+      <DependentUpon>drugs_search.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drugs_search.ascx.designer.cs">
+      <DependentUpon>drugs_search.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="drugs\drugs_vieweditadd.ascx.cs">
+      <DependentUpon>drugs_vieweditadd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drugs\drugs_vieweditadd.ascx.designer.cs">
+      <DependentUpon>drugs_vieweditadd.ascx</DependentUpon>
+    </Compile>
     <Compile Include="drugs\drug_add.aspx.cs">
       <DependentUpon>drug_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

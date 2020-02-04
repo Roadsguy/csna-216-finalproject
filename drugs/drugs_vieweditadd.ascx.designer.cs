@@ -7,21 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.patients
+namespace FinalProject.drugs
 {
 
 
-	public partial class patients_search
+	public partial class drugs_vieweditadd
 	{
-
-		/// <summary>
-		/// ScriptManagerProxy1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
 
 		/// <summary>
 		/// lblPageHeader control.
@@ -33,75 +24,57 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// txtSrchPatientID control.
+		/// txtDrugID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugID;
 
 		/// <summary>
-		/// txtSrchLastName control.
+		/// txtDrugName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugName;
 
 		/// <summary>
-		/// txtSrchFirstName control.
+		/// txtDrugDesc control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
+		protected global::System.Web.UI.WebControls.TextBox txtDrugDesc;
 
 		/// <summary>
-		/// btnSearch control.
+		/// txtMethodOfAdmin control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+		protected global::System.Web.UI.WebControls.TextBox txtMethodOfAdmin;
 
 		/// <summary>
-		/// btnAdd control.
+		/// btnGoBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+		protected global::System.Web.UI.WebControls.LinkButton btnGoBack;
 
 		/// <summary>
-		/// pnlDeleteConfirm control.
+		/// btnSubmit control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel pnlDeleteConfirm;
-
-		/// <summary>
-		/// btnDeleteChecked control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnDeleteChecked;
-
-		/// <summary>
-		/// grdPatients control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
 	}
 }

@@ -119,8 +119,11 @@ footer {
 
 .gridview {
 	width: 80%;
-	border: solid 2px dodgerblue;
+	border: solid 1px dodgerblue;
 	min-width: 80%;
+	box-shadow: 0 2px 5px 0 grey;
+	margin: 10px 0px;
+	background-color: white;
 }
 
 .gridview-header {
@@ -159,7 +162,7 @@ footer {
 	padding: 5px 5px 5px 5px;
 	color: #fff;
 	text-decoration: none;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 	.gridview a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
@@ -174,7 +177,7 @@ footer {
 }
 
 .gridview-pager {
-	background-color: #5badff;
+	background-color: dodgerblue;
 	color: White;
 	height: 30px;
 	text-align: left;
@@ -188,8 +191,9 @@ footer {
 	padding: 5px;
 }
 
-h2.pageheader {
+#pageheader {
 	text-align: center;
+	margin-top: 5px;
 }
 
 .gridviewchk {
@@ -202,9 +206,141 @@ h2.pageheader {
 	left: 50%;
 	width: 300px;
 	margin-left: -150px;
-	margin-top: -110px;
+	margin-top: -200px;
 	padding: 50px 10px;
 	text-align: center;
 	background-color: white;
 	box-shadow: 0 2px 5px 0 grey;
+}
+
+.button {
+	display: inline-block;
+	overflow: hidden;
+	padding: 5px 10px;
+	border: none;
+	box-shadow: 0 2px 5px 0 grey;
+	background-color: dodgerblue;
+	color: white;
+	user-select: none;
+	cursor: pointer;
+	margin: 5px;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: deepskyblue;
+}
+
+div.inputwrapper {
+	text-align: center;
+	width: 100%;
+}
+
+div.inputbox {
+	display: inline-block;
+	vertical-align: top;
+	background-color: white;
+	box-shadow: 0 2px 5px 0 grey;
+	width: 25%;
+	padding: 10px;
+	margin: 0px 5px 13px 5px;
+}
+
+input[type="text"] {
+	border: none;
+	border-bottom: 1px solid #AAA;
+	padding: 5px;
+	width: calc(100% - 15px);
+	margin: 5px 0px;
+}
+
+	input[type="text"]:disabled {
+		border: none;
+		background-color: white;
+		color: black;
+	}
+
+.radiobtn {
+	line-height: 39px;
+}
+
+input[type="radio"] {
+	width: 20px;
+	height: 20px;
+	margin: 0px 10px;
+	vertical-align: middle;
+}
+
+select {
+	border: none;
+	border-bottom: 1px solid #AAA;
+}
+
+	select:disabled {
+		border: none;
+		background-color: white;
+		color: black;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		text-indent: 1px;
+		text-overflow: '';
+	}
+
+	select:disabled::-ms-expand {
+		display: none;
+	}
+
+select.state {
+	padding: 5px;
+	width: 65px;
+	margin: 5px 0px;
+}
+
+input.narrow {
+	width: 25%;
+}
+
+div.inputleft_narrow {
+	padding: 0px 5px;
+	height: 39px;
+	float: left;
+	width: 90px;
+	text-align: right;
+	line-height: 39px;
+}
+
+div.inputleft_wide {
+	padding: 0px 5px;
+	height: 39px;
+	float: left;
+	width: 135px;
+	text-align: right;
+	line-height: 39px;
+}
+
+div.inputright {
+	height: 39px;
+	width: auto;
+	overflow: hidden;
+	text-align: left;
+}
+
+div.inputboxbuttons {
+	text-align: center;
+}
+
+div.inputboxheader {
+	text-align: center;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.calendar {
+	background-color: white;
+	border: solid 1px black;
+}
+
+.ajax__calendar_hover {
+	background-color: lightgrey;
 }

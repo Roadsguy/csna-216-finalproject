@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.patients
+namespace FinalProject.drugs
 {
 
 
-	public partial class patients_search
+	public partial class drugs_search
 	{
 
 		/// <summary>
@@ -33,31 +33,31 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// txtSrchPatientID control.
+		/// txtSrchDrugID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchDrugID;
 
 		/// <summary>
-		/// txtSrchLastName control.
+		/// txtSrchDrugName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchDrugName;
 
 		/// <summary>
-		/// txtSrchFirstName control.
+		/// txtSrchDrugDesc control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchDrugDesc;
 
 		/// <summary>
 		/// btnSearch control.
@@ -96,12 +96,12 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.LinkButton btnDeleteChecked;
 
 		/// <summary>
-		/// grdPatients control.
+		/// grdDrugs control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.WebControls.GridView grdDrugs;
 	}
 }

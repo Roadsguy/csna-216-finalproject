@@ -61,7 +61,7 @@ namespace FinalProject.patients
 					break;
 				case "search":
 				default:
-					Button btnAdd = (Button)ucCurrent.FindControl("btnAdd");
+					LinkButton btnAdd = (LinkButton)ucCurrent.FindControl("btnAdd");
 					btnAdd.Click += new EventHandler(btnAdd_Click);
 					ucCurrent.ViewClicked += new CommandEventHandler(Load_View);
 					ucCurrent.EditClicked += new CommandEventHandler(Load_Edit);
