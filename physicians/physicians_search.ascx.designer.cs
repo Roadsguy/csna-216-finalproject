@@ -11,44 +11,62 @@ namespace FinalProject.physicians
 {
 
 
-	public partial class physician_view
+	public partial class physicians_search
 	{
 
 		/// <summary>
-		/// txtPhysicianID control.
+		/// ScriptManagerProxy1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
+		protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
 
 		/// <summary>
-		/// txtLastName control.
+		/// lblPageHeader control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtLastName;
+		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// txtFirstName control.
+		/// txtSrchPhysicianID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchPhysicianID;
 
 		/// <summary>
-		/// txtEmployer control.
+		/// txtSrchLastName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtEmployer;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+
+		/// <summary>
+		/// txtSrchFirstName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
+
+		/// <summary>
+		/// txtSrchEmployer control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSrchEmployer;
 
 		/// <summary>
 		/// btnSearch control.
@@ -57,7 +75,7 @@ namespace FinalProject.physicians
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSearch;
+		protected global::System.Web.UI.WebControls.LinkButton btnSearch;
 
 		/// <summary>
 		/// btnAdd control.
@@ -66,7 +84,25 @@ namespace FinalProject.physicians
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnAdd;
+		protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+
+		/// <summary>
+		/// pnlDeleteConfirm control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.UpdatePanel pnlDeleteConfirm;
+
+		/// <summary>
+		/// btnDeleteChecked control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnDeleteChecked;
 
 		/// <summary>
 		/// grdPhysicians control.

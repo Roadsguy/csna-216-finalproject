@@ -4,13 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Web.Services;
-using System.IO;
 
-namespace FinalProject.drugs
+namespace FinalProject.physicians
 {
-	public partial class drugs_search : UCPageType
+	public partial class physicians_search : UCPageType
 	{
 		public encryption cipher = new encryption();
 

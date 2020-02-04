@@ -15,40 +15,14 @@ namespace FinalProject.prescriptions
 			HyperLink navCurrent = Master.FindControl("navPrescriptions") as HyperLink;
 			navCurrent.Enabled = false;
 			navCurrent.CssClass = "nav-full nav-current";
+
+			UCPageType ucCurrent = (UCPageType)LoadControl("prescriptions_search.ascx");
+			ucCurrent.ID = "ucContent";
+			this.pnlContent.ContentTemplateContainer.Controls.Clear();
+			this.pnlContent.ContentTemplateContainer.Controls.Add(ucCurrent);
 		}
 
-		public void Delete_Click(object sender, CommandEventArgs e)
-		{
-
-		}
-
-		public void Edit_Click(object sender, CommandEventArgs e)
-		{
-
-		}
-
-		protected void btnSearch_Click(object sender, EventArgs e)
-		{
-			Session["srchPrescID"] = txtRxNo.Text.Trim();
-
-			try
-			{
-				// Initiate data tier
-				LouisDataTier dataTier = new LouisDataTier();
-				DataSet prescData = new DataSet();
-				prescData = dataTier.SearchPrescriptions(txtRxNo.Text.Trim(), txtPatientID.Text.Trim(), txtDrugID.Text.Trim(), txtPhysicianID.Text.Trim());
-
-				// Populate datagrid with dataset
-				grdPrescriptions.DataSource = prescData.Tables[0];
-				grdPrescriptions.DataBind();
-			}
-			catch
-			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load prescription data')", true);
-			}
-		}
-
-		protected void btnAddPresc_Click(object sender, EventArgs e)
+		protected void btnAdd_Click(object sender, EventArgs e)
 		{
 
 		}

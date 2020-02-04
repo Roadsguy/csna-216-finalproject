@@ -15,27 +15,5 @@ namespace FinalProject.physicians
 			navCurrent.Enabled = false;
 			navCurrent.CssClass = "nav-full nav-current";
 		}
-
-		public void Delete_Click(object sender, CommandEventArgs e)
-		{
-
-		}
-
-		public void Edit_Click(object sender, CommandEventArgs e)
-		{
-
-		}
-
-		protected void btnSearch_Click(object sender, EventArgs e)
-		{
-			try
-			{
-
-			}
-			catch
-			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to load physician data')", true);
-			}
-		}
 	}
 }

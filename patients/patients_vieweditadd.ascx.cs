@@ -13,6 +13,7 @@ namespace FinalProject.patients
 {
 	public partial class patients_vieweditadd1 : UCPageType
 	{
+		// Create instance of encryption class
 		encryption cipher = new encryption();
 
 		protected void Page_Load(object sender, EventArgs e)
@@ -24,28 +25,36 @@ namespace FinalProject.patients
 			ddlAddrState.SelectedIndex = -1;
 			ddlAddrState.DataBind();
 
+			// Decrypt and store patient ID if included
 			string patientID = "";
-
-			if (PrimaryKey != "")
+			if (!string.IsNullOrEmpty(PrimaryKey))
 			{
 				patientID = cipher.Decrypt(PrimaryKey);
 			}
 
+			// Do different things for each page type
 			switch (PageType)
 			{
 				case "view":
+					// Populate controls
 					PopulateForms(patientID);
+					// Disable all controls
 					DisableAllControls();
+					// Set header text
 					lblPageHeader.Text = "View Patient Record";
 					break;
 
 				case "edit":
+					// Populate controls
 					PopulateForms(patientID);
+					// Enable patient ID text box
 					txtPatientID.Enabled = false;
+					// Set header text
 					lblPageHeader.Text = "Edit Patient Record";
 					break;
 
 				case "add":
+					// Set header text
 					lblPageHeader.Text = "Add Patient Record";
 					break;
 
@@ -63,33 +72,34 @@ namespace FinalProject.patients
 				txtPatientID.Text = patientID;
 
 				// Execute stored procedure
-				LouisDataTier aPatient = new LouisDataTier();
+				LouisDataTier dataTier = new LouisDataTier();
 				//DataSet ds = new DataSet();
-				DataSet ds = aPatient.GetPatient(patientID);
+				DataSet patientData = dataTier.GetPatient(patientID);
 
-				if (ds.Tables[0].Rows.Count > 0) // If anything is returned
+				if (patientData.Tables[0].Rows.Count > 0) // If anything is returned
 				{
 					// Populate text/combo boxes with values
-					txtLastName.Text = ds.Tables[0].Rows[0]["lName"].ToString();
-					txtFirstName.Text = ds.Tables[0].Rows[0]["fName"].ToString();
-					txtMidInit.Text = ds.Tables[0].Rows[0]["mInit"].ToString();
-					txtDateOfBirth.Text = ds.Tables[0].Rows[0]["dateOfBirth"].ToString().Trim().Substring(0, 10);
-					txtInsuranceCo.Text = ds.Tables[0].Rows[0]["insuranceCo"].ToString();
-					txtAcctBalance.Text = ds.Tables[0].Rows[0]["acctBalance"].ToString();
-					txtAddrLine1.Text = ds.Tables[0].Rows[0]["addrLine1"].ToString();
-					txtAddrLine2.Text = ds.Tables[0].Rows[0]["addrLine2"].ToString();
-					txtAddrCity.Text = ds.Tables[0].Rows[0]["addrCity"].ToString();
-					ddlAddrState.SelectedValue = ds.Tables[0].Rows[0]["addrState"].ToString().Trim();
-					txtAddrZip.Text = ds.Tables[0].Rows[0]["addrZip"].ToString();
-					txtEmail1.Text = ds.Tables[0].Rows[0]["email1"].ToString();
-					txtEmail2.Text = ds.Tables[0].Rows[0]["email2"].ToString();
-					txtHomePhoneNo.Text = ds.Tables[0].Rows[0]["homePhoneNo"].ToString();
-					txtCellPhoneNo.Text = ds.Tables[0].Rows[0]["cellPhoneNo"].ToString();
+					txtLastName.Text = patientData.Tables[0].Rows[0]["lName"].ToString();
+					txtFirstName.Text = patientData.Tables[0].Rows[0]["fName"].ToString();
+					txtMidInit.Text = patientData.Tables[0].Rows[0]["mInit"].ToString();
+					txtDateOfBirth.Text = patientData.Tables[0].Rows[0]["dateOfBirth"].ToString().Trim().Substring(0, 10);
+					txtInsuranceCo.Text = patientData.Tables[0].Rows[0]["insuranceCo"].ToString();
+					txtAcctBalance.Text = patientData.Tables[0].Rows[0]["acctBalance"].ToString();
+					txtAddrLine1.Text = patientData.Tables[0].Rows[0]["addrLine1"].ToString();
+					txtAddrLine2.Text = patientData.Tables[0].Rows[0]["addrLine2"].ToString();
+					txtAddrCity.Text = patientData.Tables[0].Rows[0]["addrCity"].ToString();
+					ddlAddrState.SelectedValue = patientData.Tables[0].Rows[0]["addrState"].ToString().Trim();
+					txtAddrZip.Text = patientData.Tables[0].Rows[0]["addrZip"].ToString();
+					txtEmail1.Text = patientData.Tables[0].Rows[0]["email1"].ToString();
+					txtEmail2.Text = patientData.Tables[0].Rows[0]["email2"].ToString();
+					txtHomePhoneNo.Text = patientData.Tables[0].Rows[0]["homePhoneNo"].ToString();
+					txtCellPhoneNo.Text = patientData.Tables[0].Rows[0]["cellPhoneNo"].ToString();
 
 					// Select gender radio button
 					char selectedGender;
-					char.TryParse(ds.Tables[0].Rows[0]["gender"].ToString().Trim(), out selectedGender);
+					char.TryParse(patientData.Tables[0].Rows[0]["gender"].ToString().Trim(), out selectedGender);
 
+					// Set radio buttons based on selected gender value
 					if (selectedGender == 'M')
 					{
 						rdoGenderM.Checked = true;
@@ -104,12 +114,14 @@ namespace FinalProject.patients
 			}
 			catch
 			{
+				// Display failure message
 				RegisterAlertScript(new CommandEventArgs("script", "Failed to populate controls"));
 			}
 		}
 
 		protected void DisableAllControls()
 		{
+			// Disable text boxes and hide buttons
 			txtPatientID.Enabled = false;
 			txtLastName.Enabled = false;
 			txtFirstName.Enabled = false;
@@ -139,7 +151,6 @@ namespace FinalProject.patients
 
 			// Interpret empty account balance as $0.00
 			string strAcctBalance = txtAcctBalance.Text.Trim();
-
 			if (strAcctBalance == string.Empty)
 			{
 				strAcctBalance = "0.00";
@@ -195,6 +206,7 @@ namespace FinalProject.patients
 			// Initiate data tier
 			LouisDataTier dataTier = new LouisDataTier();
 
+			// Determine editing or adding record
 			switch (pageType)
 			{
 				case "edit":
@@ -273,6 +285,7 @@ namespace FinalProject.patients
 
 		protected void btnGoBack_Click(object sender, EventArgs e)
 		{
+			// Trigger event to load search page
 			GoBackButtonClicked(e);
 		}
 	}

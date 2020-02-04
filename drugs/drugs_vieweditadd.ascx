@@ -3,7 +3,6 @@
 
 <div class="inputwrapper">
 	<div class="inputbox">
-		<div class="inputboxheader">Personal Information</div>
 		<div class="inputleft_wide">
 			Drug ID:
 		</div>

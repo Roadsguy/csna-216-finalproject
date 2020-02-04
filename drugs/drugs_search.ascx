@@ -69,7 +69,7 @@
 </asp:UpdatePanel>
 <asp:LinkButton ID="btnDeleteChecked" runat="server" CssClass="button" Text="Delete Selected" OnClick="btnDeleteChecked_Click" Enabled="false" Visible="false" />
 <asp:GridView ID="grdDrugs" ClientIDMode="static" AutoGenerateColumns="False" CssClass="gridview" runat="server" Width="100%"
-	AllowPaging="True" AllowSorting="True" OnSorting="grdDrugs_Sorting" ShowHeaderWhenEmpty="True" PagerStyle-CssClass="gridview-pager"
+	AllowPaging="True" AllowSorting="True" ShowHeaderWhenEmpty="True" PagerStyle-CssClass="gridview-pager"
 	HeaderStyle-CssClass="gridview-header" RowStyle-CssClass="gridview-rows">
 
 	<HeaderStyle CssClass="gridview-header"></HeaderStyle>

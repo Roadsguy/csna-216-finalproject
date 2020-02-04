@@ -44,12 +44,14 @@ namespace FinalProject
 			AlertScriptTrigger(this, e);
 		}
 
+		// PageType property stored in ViewState
 		public string PageType
 		{
 			get { return ViewState["controlPageType"] as string; }
 			set { ViewState["controlPageType"] = value; }
 		}
-
+		
+		// PrimaryKey property stored in ViewState
 		public string PrimaryKey
 		{
 			get { return ViewState["ptPrimaryKey"] as string; }

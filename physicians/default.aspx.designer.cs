@@ -15,48 +15,21 @@ namespace FinalProject.physicians
 	{
 
 		/// <summary>
-		/// txtPhysicianID control.
+		/// ScriptManager1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
+		protected global::System.Web.UI.ScriptManager ScriptManager1;
 
 		/// <summary>
-		/// txtFirstName control.
+		/// pnlContent control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
-
-		/// <summary>
-		/// txtLastName control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtLastName;
-
-		/// <summary>
-		/// btnSearch control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSearch;
-
-		/// <summary>
-		/// grdPatients control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPatients;
+		protected global::System.Web.UI.UpdatePanel pnlContent;
 	}
 }

@@ -7,83 +7,110 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.physicians
+namespace FinalProject.prescriptions
 {
 
 
-	public partial class physician_edit
+	public partial class prescriptions_search
 	{
 
 		/// <summary>
-		/// form1 control.
+		/// ScriptManagerProxy1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
 
 		/// <summary>
-		/// Fname control.
+		/// lblPageHeader control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Fname;
+		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// Lname control.
+		/// txtSrchRxNo control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Lname;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchRxNo;
 
 		/// <summary>
-		/// MI control.
+		/// txtSrchPatientID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox MI;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
 
 		/// <summary>
-		/// Gender control.
+		/// txtSrchDrugID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox Gender;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchDrugID;
 
 		/// <summary>
-		/// DOB control.
+		/// txtSrchPhysicianID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox DOB;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchPhysicianID;
 
 		/// <summary>
-		/// btnSave control.
+		/// btnSearch control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSave;
+		protected global::System.Web.UI.WebControls.LinkButton btnSearch;
 
 		/// <summary>
-		/// btnClose control.
+		/// btnAdd control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClose;
+		protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+
+		/// <summary>
+		/// pnlDeleteConfirm control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.UpdatePanel pnlDeleteConfirm;
+
+		/// <summary>
+		/// btnDeleteChecked control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnDeleteChecked;
+
+		/// <summary>
+		/// grdPrescriptions control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.GridView grdPrescriptions;
 	}
 }

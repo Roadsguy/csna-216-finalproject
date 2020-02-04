@@ -12,11 +12,13 @@ namespace FinalProject.patients
 {
 	public partial class patients_search : UCPageType
 	{
+		// Create instance of gridview code and encryption class
 		gridviewcode grd = new gridviewcode();
 		public encryption cipher = new encryption();
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			// Put previously typed values back into text boxes, if any (used on return from vieweditadd page)
 			txtSrchPatientID.Text = Convert.ToString(Session["srchPatID"]);
 			txtSrchLastName.Text = Convert.ToString(Session["srchLName"]);
 			txtSrchFirstName.Text = Convert.ToString(Session["srchFName"]);
@@ -25,20 +27,23 @@ namespace FinalProject.patients
 			grdPatients.PageIndexChanging += new GridViewPageEventHandler(grdPatients_PageIndexChanging);
 			grdPatients.Sorting += new GridViewSortEventHandler(grdPatients_Sorting);
 
-			if (Convert.ToString(Session["srchPatHasSearched"]) == "true")
+			if (Convert.ToString(Session["srchPatHasSearched"]) == "true") // Check if search already performed
 			{
+				// Repopulate GridView
 				PopulateGridView();
 			}
 
 			// Keep delete confirmation loaded on partial postback, if already loaded
 			if (Convert.ToString(Session["delConfirmActive"]) == "true")
 			{
-				switch (Convert.ToString(Session["delConfirmType"]))
+				switch (Convert.ToString(Session["delConfirmType"])) // Check whether single or multi delete
 				{
 					case "single":
+						// Load single delete confirmation
 						Delete_Click(sender, new CommandEventArgs("delete", Convert.ToString(Session["delPatientID"])));
 						break;
 					case "multi":
+						// Load multi delete confirmation
 						btnDeleteChecked_Click(sender, e);
 						break;
 				}
@@ -49,20 +54,22 @@ namespace FinalProject.patients
 		{
 			try
 			{
+				// Save values in text boxes to session
 				SrchPatSaveSession();
 
-				Cache.Remove("srchPatGridDataView");
+				// Populate GridView
 				PopulateGridView();
 			}
 			catch
 			{
+				// Display failure message
 				RegisterAlertScript(new CommandEventArgs("script", "Failed to load patient data"));
 			}
 		}
 
 		protected void PopulateGridView()
 		{
-			// Get session values
+			// Get text box session values
 			string patientID = Convert.ToString(Session["srchPatID"]);
 			string lastName = Convert.ToString(Session["srchLName"]);
 			string firstName = Convert.ToString(Session["srchFName"]);
@@ -88,37 +95,38 @@ namespace FinalProject.patients
 				btnDeleteChecked.Visible = false;
 			}
 
-			Session["srchPatGridData"] = patientData;
+			// Set value that patient search has been performed
 			Session["srchPatHasSearched"] = "true";
 
-			// Add data to cache if cache is empty
-			if (Cache["srchPatGridDataView"] == null)
-			{
-				Cache.Add("srchPatGridDataView", new DataView(patientData.Tables[0]),
-					null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.TimeSpan.FromMinutes(10),
-					System.Web.Caching.CacheItemPriority.Default, null);
-			}
+			// Delete any cached GridView data
+			Cache.Remove("srchPatGridDataView");
+			// Add new data to cache
+			Cache.Add("srchPatGridDataView", new DataView(patientData.Tables[0]),
+				null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.TimeSpan.FromMinutes(10),
+				System.Web.Caching.CacheItemPriority.Default, null);
 		}
 
 		public void View_Click(object sender, CommandEventArgs e)
 		{
+			// Trigger view button click event for default page
 			ViewButtonClicked(e);
 		}
 
 		public void Edit_Click(object sender, CommandEventArgs e)
 		{
+			// Trigger edit button click event for default page
 			EditButtonClicked(e);
 		}
 
 		public void Delete_Click(object sender, CommandEventArgs e)
 		{
-			// Load delete confirmation control
-			Session["delPatientID"] = e.CommandArgument.ToString();
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");
+			// Loads delete confirmation control
+			Session["delPatientID"] = e.CommandArgument.ToString();							// Store patient ID of record to be deleted
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");	// Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
-			ucDelConfirm.DeleteType = "single";
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);
+			ucDelConfirm.DeleteType = "single";												// Set deletion type to single
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();				// Clear content of delete confirmation update panel, if any
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);		// Add delete confirmation control to update panel
 
 			// Assign event handlers
 			ucDelConfirm.confirmed += new CommandEventHandler(DeleteConfirmed);
@@ -127,12 +135,12 @@ namespace FinalProject.patients
 
 		public void btnDeleteChecked_Click(object sender, EventArgs e)
 		{
-			// Load delete confirmation control
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");
+			// Loads delete confirmation control
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx"); // Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
-			ucDelConfirm.DeleteType = "multi";
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);
+			ucDelConfirm.DeleteType = "multi";                                              // Set deletion type to multiple
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();                // Clear content of delete confirmation update panel, if any
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);      // Add delete confirmation control to update panel
 
 			// Assign event handlers
 			ucDelConfirm.confirmed += new CommandEventHandler(DeleteConfirmed);
@@ -141,17 +149,18 @@ namespace FinalProject.patients
 
 		public void DelRegisterAlertScript(object sender, CommandEventArgs e)
 		{
+			// Pass alert script event from delete confirmation control to main page
 			RegisterAlertScript(e);
 		}
 
 		public void DeleteConfirmed(object sender, CommandEventArgs e)
 		{
-			string test = grdPatients.Rows[1].Cells[1].Text;
-
+			// Initiate data tier and variables
 			LouisDataTier dataTier = new LouisDataTier();
 			bool deleteSuccess = false;
 			string plural = "";
 
+			// Check delete type
 			switch (e.CommandArgument.ToString())
 			{
 				case "single": // Deleting a single record
@@ -163,11 +172,14 @@ namespace FinalProject.patients
 					plural = "s";
 					if (grdPatients.Rows.Count > 0)
 					{
+						// Loop through rows
 						foreach (GridViewRow row in grdPatients.Rows)
 						{
+							// Find checkbox of row
 							CheckBox chkSelectPatID = new CheckBox();
 							chkSelectPatID = (CheckBox)row.FindControl("chkPatientID");
 
+							// Delete record if checkbox checked
 							if (chkSelectPatID.Checked)
 							{
 								string multiPatientID = row.Cells[1].Text;
@@ -180,21 +192,23 @@ namespace FinalProject.patients
 
 			if (deleteSuccess == true)
 			{
+				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Patient record" + plural + " deleted successfully"));
 			}
 			else
 			{
+				// Display failure message
 				RegisterAlertScript(new CommandEventArgs("script", "Failed to delete patient record" + plural));
 			}
 
-			// Remove delete confirmation message and update GridView
+			// Remove delete confirmation control and update GridView
 			RemoveDeleteConfirmation();
 			PopulateGridView();
 		}
 
 		public void RemoveDeleteConfirmation()
 		{
-			// Remove delete confirmation message
+			// Remove delete confirmation control
 			pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();
 			Session["delConfirmActive"] = false;
 		}
@@ -214,34 +228,23 @@ namespace FinalProject.patients
 		protected void grdPatients_Sorting(object sender, GridViewSortEventArgs e)
 		{
 			string newSortExpr = e.SortExpression;
-			string sortDir = Convert.ToString(ViewState["srchPatSortDir"]);
-			string oldSortExpr = Convert.ToString(ViewState["srchPatSortExpr"]);
+			string sortDir = (string)Session["srchPatSortDir"];
+			string oldSortExpr = (string)Session["srchPatSortExpr"];
 			DataView patientData = (DataView)Cache["srchPatGridDataView"];
 
 			var sortedPatientData = grd.SortRecords(oldSortExpr, newSortExpr, sortDir, patientData);
 			grdPatients.DataSource = sortedPatientData.Item1;
-			ViewState["srchPatSortDir"] = sortedPatientData.Item2;
-			ViewState["srchPatSortExpr"] = newSortExpr;
+			Session["srchPatSortDir"] = sortedPatientData.Item2;
+			Session["srchPatSortExpr"] = newSortExpr;
 			grdPatients.DataBind();
 		}
 
 		public void SrchPatSaveSession()
 		{
+			// Save currently entered text box values to session
 			Session["srchPatID"] = txtSrchPatientID.Text;
 			Session["srchLName"] = txtSrchLastName.Text;
 			Session["srchFName"] = txtSrchFirstName.Text;
-		}
-
-		protected void btnAdd_Click(object sender, EventArgs e)
-		{
-			SrchPatSaveSession();
-			txtSrchPatientID.Text = "test";
-			_default parentPage = new _default();
-		}
-
-		protected void btnDeleteConfirm_Click(object sender, EventArgs e)
-		{
-
 		}
 	}
 }
