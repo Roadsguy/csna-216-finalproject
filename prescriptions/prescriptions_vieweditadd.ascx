@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="prescriptions_vieweditadd.ascx.cs" Inherits="FinalProject.prescriptions.prescriptions_vieweditadd" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="CC1" %>
-<h2 id="pageheader"><asp:Label ID="lblPageHeader" runat="server" Text="ViewEditAdd Patients"></asp:Label></h2>
+<h2 id="pageheader"><asp:Label ID="lblPageHeader" runat="server" Text="ViewEditAdd Prescription"></asp:Label></h2>
 
 <div class="inputwrapper">
 	<div class="inputbox">
