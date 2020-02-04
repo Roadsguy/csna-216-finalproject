@@ -7,45 +7,40 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.Services;
 using System.IO;
+using System.Text;
 
 namespace FinalProject.patients
 {
-	public partial class patients_vieweditadd : System.Web.UI.Page
+	public partial class patients_vieweditadd1 : UCPageType
 	{
 		encryption cipher = new encryption();
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string pageType = "";
-
-			if (Request.Form["type"] != null)
-			{
-				pageType = cipher.Decrypt(Request.Form["type"]);
-			}
-			else
-			{
-				Response.Redirect("/patients");
-			}
-
-			string cipherpatientID = Request.Form["ID"];
-
 			// Populate state combo box
 			ddlAddrState.DataSource = StateManager.getStates();
 			ddlAddrState.DataTextField = "abbreviation";
 			ddlAddrState.DataValueField = "abbreviation";
-			ddlAddrState.SelectedIndex = 0;
+			ddlAddrState.SelectedIndex = -1;
 			ddlAddrState.DataBind();
 
-			switch (pageType)
+			string patientID = "";
+
+			if (PrimaryKey != "")
+			{
+				patientID = cipher.Decrypt(PrimaryKey);
+			}
+
+			switch (PageType)
 			{
 				case "view":
-					PopulateForms(cipherpatientID);
+					PopulateForms(patientID);
 					DisableAllControls();
 					lblPageHeader.Text = "View Patient Record";
 					break;
 
 				case "edit":
-					PopulateForms(cipherpatientID);
+					PopulateForms(patientID);
 					txtPatientID.Enabled = false;
 					lblPageHeader.Text = "Edit Patient Record";
 					break;
@@ -54,18 +49,16 @@ namespace FinalProject.patients
 					lblPageHeader.Text = "Add Patient Record";
 					break;
 
-				default:
+				default: // Invalid PageType
 					Response.Redirect("/patients");
 					break;
 			}
 		}
 
-		protected void PopulateForms(string cipherPatientID)
+		protected void PopulateForms(string patientID)
 		{
 			try
 			{
-				string patientID = cipher.Decrypt(cipherPatientID);
-
 				// Populate Patient ID textbox with input value
 				txtPatientID.Text = patientID;
 
@@ -111,7 +104,7 @@ namespace FinalProject.patients
 			}
 			catch
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to populate controls')", true);
+				RegisterAlertScript(new CommandEventArgs("script", "Failed to populate controls"));
 			}
 		}
 
@@ -141,10 +134,8 @@ namespace FinalProject.patients
 
 		protected void btnSubmit_Click(object sender, EventArgs e)
 		{
-			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('TEST')", true);
-
 			// Retrieve page type
-			string pageType = cipher.Decrypt(Request.Form["type"]);
+			string pageType = PageType;
 
 			// Interpret empty account balance as $0.00
 			string strAcctBalance = txtAcctBalance.Text.Trim();
@@ -155,32 +146,38 @@ namespace FinalProject.patients
 			}
 
 			// Check for invalid null values and show error message
-			string emptyMessage = "The following fields cannot be empty:" + Environment.NewLine;
+			StringBuilder emptyMessage = new StringBuilder();
+			emptyMessage.Append("The following fields cannot be empty:" + "\\n"); // Double backslashes are required for registering JS to work
 			bool emptyFields = false;
 
 			if (txtPatientID.Text.Trim() == string.Empty)
 			{
-				emptyMessage += "Patient ID" + Environment.NewLine;
+				emptyMessage.Append("Patient ID" + "\\n"); 
 				emptyFields = true;
 			}
 			if (txtLastName.Text.Trim() == string.Empty)
 			{
-				emptyMessage += "Last Name" + Environment.NewLine;
+				emptyMessage.Append("Last Name" + "\\n");
 				emptyFields = true;
 			}
 			if (txtFirstName.Text.Trim() == string.Empty)
 			{
-				emptyMessage += "First Name" + Environment.NewLine;
+				emptyMessage.Append("First Name" + "\\n");
 				emptyFields = true;
 			}
 			if (rdoGenderM.Checked == false && rdoGenderF.Checked == false)
 			{
-				emptyMessage += "Gender";
+				emptyMessage.Append("Gender" + "\\n");
+				emptyFields = true;
+			}
+			if (txtDateOfBirth.Text.Trim() == string.Empty)
+			{
+				emptyMessage.Append("Date of Birth");
 				emptyFields = true;
 			}
 			if (emptyFields == true)
 			{
-				ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('" + emptyMessage + "')", true);
+				RegisterAlertScript(new CommandEventArgs("script", emptyMessage.ToString()));
 				return;
 			}
 
@@ -225,14 +222,15 @@ namespace FinalProject.patients
 					if (updateSuccess == true)
 					{
 						// Display success message
-						ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Patient record updated successfully')", true);
+						RegisterAlertScript(new CommandEventArgs("script", "Patient record updated successfully"));
 					}
 					else
 					{
 						// Display failure message
-						ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to update patient record')", true);
+						RegisterAlertScript(new CommandEventArgs("script", "Failed to update patient record"));
 					}
 					break;
+
 				case "add":
 					// Execute stored procedure (returns true if successful)
 					bool addSuccess = dataTier.AddPatient(
@@ -258,19 +256,24 @@ namespace FinalProject.patients
 					if (addSuccess == true)
 					{
 						// Display success message
-						ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Patient record added successfully')", true);
+						RegisterAlertScript(new CommandEventArgs("script", "Patient record added successfully"));
 					}
 					else
 					{
 						// Display failure message
-						ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Failed to add patient record')", true);
+						RegisterAlertScript(new CommandEventArgs("script", "Failed to add patient record"));
 					}
 					break;
 				default:
 					// Display error message
-					ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Invalid pageType')", true);
+					RegisterAlertScript(new CommandEventArgs("script", "Invalid pageType"));
 					break;
 			}
+		}
+
+		protected void btnGoBack_Click(object sender, EventArgs e)
+		{
+			GoBackButtonClicked(e);
 		}
 	}
 }

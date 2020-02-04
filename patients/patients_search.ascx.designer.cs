@@ -15,31 +15,49 @@ namespace FinalProject.patients
 	{
 
 		/// <summary>
-		/// txtStudentID control.
+		/// ScriptManagerProxy1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtStudentID;
+		protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
 
 		/// <summary>
-		/// txtLastName control.
+		/// lblPageHeader control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtLastName;
+		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// txtFirstName control.
+		/// txtSrchPatientID control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtFirstName;
+		protected global::System.Web.UI.WebControls.TextBox txtSrchPatientID;
+
+		/// <summary>
+		/// txtSrchLastName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSrchLastName;
+
+		/// <summary>
+		/// txtSrchFirstName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSrchFirstName;
 
 		/// <summary>
 		/// btnSearch control.
@@ -60,13 +78,22 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.Button btnAdd;
 
 		/// <summary>
-		/// ajaxbtn control.
+		/// btnDeleteChecked control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlButton ajaxbtn;
+		protected global::System.Web.UI.WebControls.Button btnDeleteChecked;
+
+		/// <summary>
+		/// pnlDeleteConfirm control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.UpdatePanel pnlDeleteConfirm;
 
 		/// <summary>
 		/// grdPatients control.

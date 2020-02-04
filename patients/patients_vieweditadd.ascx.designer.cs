@@ -11,7 +11,7 @@ namespace FinalProject.patients
 {
 
 
-	public partial class patients_vieweditadd
+	public partial class patients_vieweditadd1
 	{
 
 		/// <summary>
@@ -186,13 +186,13 @@ namespace FinalProject.patients
 		protected global::System.Web.UI.WebControls.TextBox txtInsuranceCo;
 
 		/// <summary>
-		/// btnBack control.
+		/// btnGoBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnBack;
+		protected global::System.Web.UI.WebControls.Button btnGoBack;
 
 		/// <summary>
 		/// btnSubmit control.

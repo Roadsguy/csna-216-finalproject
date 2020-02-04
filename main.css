@@ -191,3 +191,20 @@ footer {
 h2.pageheader {
 	text-align: center;
 }
+
+.gridviewchk {
+	align-items: center;
+}
+
+#deleteconfirm-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	margin-left: -150px;
+	margin-top: -110px;
+	padding: 50px 10px;
+	text-align: center;
+	background-color: white;
+	box-shadow: 0 2px 5px 0 grey;
+}

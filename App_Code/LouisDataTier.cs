@@ -210,7 +210,7 @@ namespace FinalProject
 			}
 		}
 
-		public bool DeletePatient(string strStudentID)
+		public bool DeletePatient(string strPatientID)
 		{
 			try
 			{
@@ -227,7 +227,7 @@ namespace FinalProject
 				cmdString.CommandText = "DeletePatient";
 
 				// Define input parameter
-				cmdString.Parameters.Add("@patientID", SqlDbType.VarChar, 8).Value = strStudentID;
+				cmdString.Parameters.Add("@patientID", SqlDbType.VarChar, 8).Value = strPatientID;
 
 				// Execute stored procedure
 				cmdString.ExecuteNonQuery();

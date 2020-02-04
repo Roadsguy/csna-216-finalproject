@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
+    <Content Include="deleteconfirm.ascx" />
     <Content Include="drugs\default.aspx" />
     <Content Include="drugs\drug_add.aspx" />
     <Content Include="drugs\drug_edit.aspx" />
@@ -79,15 +80,9 @@
     <Content Include="images\view.svg" />
     <Content Include="jquery-3.4.1.js" />
     <Content Include="main.css" />
-    <Content Include="patients\ajaxtest.aspx" />
-    <Content Include="patients\ajaxtest2.aspx" />
     <Content Include="patients\default.aspx" />
-    <Content Include="patients\patients_search.aspx" />
-    <Content Include="patients\patients_vieweditadd.aspx" />
-    <Content Include="patients\test.aspx" />
-    <Content Include="patients\testmaster.aspx" />
-    <Content Include="patients\UCtest1.ascx" />
-    <Content Include="patients\UCtest2.ascx" />
+    <Content Include="patients\patients_search.ascx" />
+    <Content Include="patients\patients_vieweditadd.ascx" />
     <Content Include="physicians\default.aspx" />
     <Content Include="physicians\physician_add.aspx" />
     <Content Include="physicians\physician_edit.aspx" />
@@ -96,10 +91,7 @@
     <Content Include="prescriptions\prescription_add.aspx" />
     <Content Include="refills\default.aspx" />
     <Content Include="State.xml" />
-    <Content Include="test.aspx" />
     <Content Include="Web.config" />
-    <Content Include="_test.aspx" />
-    <Content Include="_test.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="default.aspx.cs">
@@ -108,6 +100,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="deleteconfirm.ascx.cs">
+      <DependentUpon>deleteconfirm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deleteconfirm.ascx.designer.cs">
+      <DependentUpon>deleteconfirm.ascx</DependentUpon>
     </Compile>
     <Compile Include="drugs\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -140,20 +139,6 @@
       <DependentUpon>Louis.master</DependentUpon>
     </Compile>
     <Compile Include="App_Code\LouisDataTier.cs" />
-    <Compile Include="patients\ajaxtest.aspx.cs">
-      <DependentUpon>ajaxtest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\ajaxtest.aspx.designer.cs">
-      <DependentUpon>ajaxtest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="patients\ajaxtest2.aspx.cs">
-      <DependentUpon>ajaxtest2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\ajaxtest2.aspx.designer.cs">
-      <DependentUpon>ajaxtest2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="patients\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,47 +146,19 @@
     <Compile Include="patients\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="patients\patients_search.aspx.cs">
-      <DependentUpon>patients_search.aspx</DependentUpon>
+    <Compile Include="patients\patients_search.ascx.cs">
+      <DependentUpon>patients_search.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patients\patients_search.aspx.designer.cs">
-      <DependentUpon>patients_search.aspx</DependentUpon>
+    <Compile Include="patients\patients_search.ascx.designer.cs">
+      <DependentUpon>patients_search.ascx</DependentUpon>
     </Compile>
-    <Compile Include="patients\patients_vieweditadd.aspx.cs">
-      <DependentUpon>patients_vieweditadd.aspx</DependentUpon>
+    <Compile Include="patients\patients_vieweditadd.ascx.cs">
+      <DependentUpon>patients_vieweditadd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="patients\patients_vieweditadd.aspx.designer.cs">
-      <DependentUpon>patients_vieweditadd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="patients\test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="patients\testmaster.aspx.cs">
-      <DependentUpon>testmaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\testmaster.aspx.designer.cs">
-      <DependentUpon>testmaster.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="patients\UCtest1.ascx.cs">
-      <DependentUpon>UCtest1.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\UCtest1.ascx.designer.cs">
-      <DependentUpon>UCtest1.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="patients\UCtest2.ascx.cs">
-      <DependentUpon>UCtest2.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="patients\UCtest2.ascx.designer.cs">
-      <DependentUpon>UCtest2.ascx</DependentUpon>
+    <Compile Include="patients\patients_vieweditadd.ascx.designer.cs">
+      <DependentUpon>patients_vieweditadd.ascx</DependentUpon>
     </Compile>
     <Compile Include="physicians\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -253,21 +210,13 @@
     <Compile Include="refills\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="state.cs" />
-    <Compile Include="StateManager.cs" />
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
+    <Compile Include="App_Code\state.cs" />
+    <Compile Include="App_Code\StateManager.cs" />
+    <Compile Include="App_Code\UCPageType.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="_test.aspx.cs">
-      <DependentUpon>_test.aspx</DependentUpon>
+    <Compile Include="App_Code\UCDelConfirm.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="_test.aspx.designer.cs">
-      <DependentUpon>_test.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

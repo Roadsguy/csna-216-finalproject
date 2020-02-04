@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCtest2.ascx.cs" Inherits="FinalProject.patients.UCtest2" %>
-<asp:TextBox ID="txtTest2" runat="server" Enabled="false"></asp:TextBox><asp:Button ID="btnTest2" runat="server" Text="Try it 2" OnClick="btnTest2_Click" />
