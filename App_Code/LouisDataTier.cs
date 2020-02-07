@@ -103,11 +103,6 @@ namespace FinalProject
 				// Return dataSet
 				return aDataSet;
 			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
-			}
 			finally
 			{
 				// Close connection
@@ -144,11 +139,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return bDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
@@ -340,11 +330,6 @@ namespace FinalProject
 				// Return dataSet
 				return aDataSet;
 			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
-			}
 			finally
 			{
 				// Close connection
@@ -381,11 +366,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return bDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
@@ -561,11 +541,6 @@ namespace FinalProject
 				// Return dataSet
 				return aDataSet;
 			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
-			}
 			finally
 			{
 				// Close connection
@@ -602,11 +577,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return bDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
@@ -773,11 +743,6 @@ namespace FinalProject
 				// Return dataSet
 				return aDataSet;
 			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
-			}
 			finally
 			{
 				// Close connection
@@ -814,11 +779,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return bDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
@@ -1032,11 +992,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return bDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
