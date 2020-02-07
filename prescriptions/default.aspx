@@ -2,6 +2,7 @@
 <%@ Register src="prescriptions_search.ascx" TagName="uc" TagPrefix="search" %>
 <%@ Register src="prescriptions_vieweditadd.ascx" TagName="uc" TagPrefix="vieweditadd" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+	<title>Prescriptions - Louis's Pharmacy</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
 	<div id="content">

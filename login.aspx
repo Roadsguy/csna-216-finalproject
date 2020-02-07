@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Louis.master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="FinalProject.login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+	<title>Log In - Louis's Pharmacy</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageContent" runat="server">
 	<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
