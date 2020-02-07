@@ -105,7 +105,9 @@ namespace FinalProject.refills
 				if (refillData.Tables[0].Rows.Count > 0) // If anything is returned
 				{
 					// Populate text/combo boxes with values
-					txtRefillDateTime.Text = refillData.Tables[0].Rows[0]["refillDateTime"].ToString();
+					txtRefillDateTime.Text = ((DateTime)refillData.Tables[0].Rows[0]["refillDateTime"]).ToString("yyyy-MM-dd HH:mm");
+
+					//txtRefillDateTime.Text = refillData.Tables[0].Rows[0]["refillDateTime"].ToString();
 				}
 			}
 			catch
@@ -179,24 +181,43 @@ namespace FinalProject.refills
 
 				case "refill-auto":
 				case "add-manual":
-					// Execute stored procedure (returns true if successful)
-					bool addSuccess = dataTier.AddRefill(
-						txtRxNo.Text.Trim(),
-						txtRefillDateTime.Text.Trim()
-						);
-
-					if (addSuccess == true)
+					// Check for refills left by Rx No.
+					DataSet refilledPresc = dataTier.GetPrescription(txtRxNo.Text.Trim());
+					int refillsLeft = 0;
+					try
 					{
-						// Display success message
-						RegisterAlertScript(new CommandEventArgs("script", "Prescription refilled successfully"));
+						// Parse refills left; catches if prescription doesn't exist
+						int.TryParse(refilledPresc.Tables[0].Rows[0]["refillsLeft"].ToString(), out refillsLeft);
+						if (refillsLeft > 0)
+						{
+							// Execute stored procedure (returns true if successful)
+							bool addSuccess = dataTier.AddRefill(
+								txtRxNo.Text.Trim(),
+								txtRefillDateTime.Text.Trim()
+								);
 
-						// Clear saved data
-						ClearSavedData();
+							if (addSuccess == true)
+							{
+								// Display success message
+								RegisterAlertScript(new CommandEventArgs("script", "Prescription refilled successfully"));
+
+								// Clear saved data
+								ClearSavedData();
+							}
+							else
+							{
+								// Display failure message
+								RegisterAlertScript(new CommandEventArgs("script", "Failed to refill prescriptions"));
+							}
+						}
+						else // refillsLeft < 1
+						{
+							RegisterAlertScript(new CommandEventArgs("script", "There are no refills left for prescription " + txtRxNo.Text.Trim()));
+						}
 					}
-					else
+					catch // Prescription doesn't exist
 					{
-						// Display failure message
-						RegisterAlertScript(new CommandEventArgs("script", "Failed to refill prescriptions"));
+						RegisterAlertScript(new CommandEventArgs("script", "Prescription " + txtRxNo.Text.Trim() + " does not exist"));
 					}
 					break;
 				default:

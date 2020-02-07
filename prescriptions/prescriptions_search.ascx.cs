@@ -312,8 +312,20 @@ namespace FinalProject.prescriptions
 
 		public void Refill_Click(object sender, CommandEventArgs e)
 		{
-			// Trigger refill button click event for default page
-			RefillButtonClicked(e);
+			string[] commandArgs = e.CommandArgument.ToString().Split(new char[] { ',' });
+			string cipherRxNo = commandArgs[0];
+			int refillsLeft = 0;
+			int.TryParse(commandArgs[1], out refillsLeft);
+
+			if (refillsLeft > 0)
+			{
+				// Trigger refill button click event for default page
+				RefillButtonClicked(new CommandEventArgs("rxNo", cipherRxNo));
+			}
+			else // refillsLeft < 1
+			{
+				RegisterAlertScript(new CommandEventArgs("script", "There are no refills left for prescription " + cipher.Decrypt(cipherRxNo)));
+			}
 		}
 
 		public void Delete_Click(object sender, CommandEventArgs e)

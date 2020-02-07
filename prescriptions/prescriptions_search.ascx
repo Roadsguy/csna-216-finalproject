@@ -126,8 +126,8 @@
 		<asp:BoundField DataField="physician" HeaderText="Physician" SortExpression="physician" />
 		<asp:BoundField DataField="physicianID" Visible="false" />
 		<asp:BoundField DataField="dosage" HeaderText="Dosage" SortExpression="dosage" />
-		<asp:BoundField DataField="startDate" HeaderText="Start Date" SortExpression="startDate" />
-		<asp:BoundField DataField="finishDate" HeaderText="Finish Date" SortExpression="finishDate" />
+		<asp:BoundField DataField="startDate" HeaderText="Start Date" DataFormatString="{0:yyyy-MM-dd}" SortExpression="startDate" />
+		<asp:BoundField DataField="finishDate" HeaderText="Finish Date" DataFormatString="{0:yyyy-MM-dd}" SortExpression="finishDate" />
 		<asp:BoundField DataField="refillsLeft" HeaderText="Refills Left" SortExpression="refillsLeft" />
 		<asp:TemplateField HeaderText="">
 			<ItemTemplate>
@@ -136,7 +136,7 @@
 				<asp:ImageButton ID="imgBtnEdit" ClientIDMode="static" runat="server" ImageUrl="/images/edit.svg" Height="24" ToolTip="Edit Record"
 					OnCommand="Edit_Click" CommandName="lbtnEdit" CommandArgument='<% # cipher.Encrypt(Eval("rxNo").ToString()) %>' />
 				<asp:ImageButton ID="imgBtnRefill" ClientIDMode="static" runat="server" ImageUrl="/images/refill.svg" Height="24" ToolTip="Refill Prescription"
-					OnCommand="Refill_Click" CommandName="lbtnRefill" CommandArgument='<% # cipher.Encrypt(Eval("rxNo").ToString()) %>' />
+					OnCommand="Refill_Click" CommandName="lbtnRefill" CommandArgument='<% # cipher.Encrypt(Eval("rxNo").ToString()) + "," + Eval("refillsLeft") %>' />
 				&nbsp;&nbsp;&nbsp;
 				<asp:ImageButton ID="imgBtnDelete" ClientIDMode="static" runat="server" ImageUrl="/images/delete.svg" Height="24" ToolTip="Delete Record"
 					OnCommand="Delete_Click" CommandName="lbtnDelete" CommandArgument='<% # cipher.Encrypt(Eval("rxNo").ToString()) %>' />

@@ -135,7 +135,7 @@
 		<asp:BoundField DataField="drugID" visible="false" />
 		<asp:BoundField DataField="physician" HeaderText="Physician" SortExpression="physician" />
 		<asp:BoundField DataField="physicianID" Visible="false" />
-		<asp:BoundField DataField="refillDateTime" HeaderText="Time of Refill" SortExpression="refillDateTime" />
+		<asp:BoundField DataField="refillDateTime" HeaderText="Time of Refill" DataFormatString="{0:yyyy-MM-dd HH:mm}" SortExpression="refillDateTime" />
 		<asp:TemplateField HeaderText="">
 			<ItemTemplate>
 				<asp:ImageButton ID="imgBtnView" ClientIDMode="static" runat="server" ImageUrl="/images/view.svg" Height="24" ToolTip="View Record" OnCommand="View_Click"

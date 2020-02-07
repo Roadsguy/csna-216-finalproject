@@ -406,11 +406,21 @@ namespace FinalProject.prescriptions
 
 		protected void btnRefill_Click(object sender, EventArgs e)
 		{
-			// Encrypt Rx No.
-			string cipherRxNo = cipher.Encrypt(txtRxNo.Text.Trim());
+			int refillsLeft = 0;
+			int.TryParse(txtRefillsLeft.Text.Trim(), out refillsLeft);
 
-			// Trigger event to load refill page
-			RefillButtonClicked(new CommandEventArgs("rxNo", cipherRxNo));
+			if (refillsLeft > 0)
+			{
+				// Encrypt Rx No.
+				string cipherRxNo = cipher.Encrypt(txtRxNo.Text.Trim());
+
+				// Trigger refill button click event for default page
+				RefillButtonClicked(new CommandEventArgs("rxNo", cipherRxNo));
+			}
+			else // refillsLeft < 1
+			{
+				RegisterAlertScript(new CommandEventArgs("script", "There are no refills left for prescription " + txtRxNo.Text.Trim()));
+			}
 		}
 
 		protected void ClearSavedData()
