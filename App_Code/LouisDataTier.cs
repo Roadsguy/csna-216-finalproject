@@ -686,11 +686,44 @@ namespace FinalProject
 				cmdString.Parameters.Add("@physicianID", SqlDbType.VarChar, 8).Value = strPhysicianID;
 				cmdString.Parameters.Add("@dosage", SqlDbType.VarChar, 50).Value = strDosage;
 				cmdString.Parameters.Add("@frequency", SqlDbType.VarChar, 50).Value = strFrequency;
-				cmdString.Parameters.Add("@startDate", SqlDbType.Date).Value = strStartDate;
-				cmdString.Parameters.Add("@finishDate", SqlDbType.Date).Value = strFinishDate;
 				cmdString.Parameters.Add("@refillsLeft", SqlDbType.Int).Value = int.Parse(strRefills);
 				cmdString.Parameters.Add("@refillsGiven", SqlDbType.Int).Value = int.Parse(strRefills);
-				cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = strCost;
+
+				// Define start date parameter
+				if (strStartDate == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add("@startDate", SqlDbType.DateTime).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add("@startDate", SqlDbType.DateTime).Value = strStartDate;
+				}
+
+				// Define date parameter
+				if (strFinishDate == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add("@finishDate", SqlDbType.DateTime).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add("@finishDate", SqlDbType.DateTime).Value = strFinishDate;
+				}
+
+				// Define cost parameter
+				if (strCost == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = decimal.Parse(strCost);
+				}
 
 				// Execute stored procedure
 				cmdString.ExecuteNonQuery();
@@ -811,11 +844,44 @@ namespace FinalProject
 				cmdString.Parameters.Add("@physicianID", SqlDbType.VarChar, 8).Value = strPhysicianID;
 				cmdString.Parameters.Add("@dosage", SqlDbType.VarChar, 50).Value = strDosage;
 				cmdString.Parameters.Add("@frequency", SqlDbType.VarChar, 50).Value = strFrequency;
-				cmdString.Parameters.Add("@startDate", SqlDbType.Date).Value = strStartDate;
-				cmdString.Parameters.Add("@finishDate", SqlDbType.Date).Value = strFinishDate;
 				cmdString.Parameters.Add("@refillsLeft", SqlDbType.Int).Value = int.Parse(strRefillsLeft);
-				cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = strCost;
 				cmdString.Parameters.Add("@refillsGiven", SqlDbType.Int).Value = int.Parse(strRefillsGiven);
+
+				// Define start date parameter
+				if (strStartDate == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add("@startDate", SqlDbType.DateTime).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add("@startDate", SqlDbType.DateTime).Value = strStartDate;
+				}
+
+				// Define date parameter
+				if (strFinishDate == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add("@finishDate", SqlDbType.DateTime).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add("@finishDate", SqlDbType.DateTime).Value = strFinishDate;
+				}
+
+				// Define cost parameter
+				if (strCost == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add(new SqlParameter("@cost", SqlDbType.Decimal) { Precision = 9, Scale = 2 }).Value = decimal.Parse(strCost);
+				}
 
 				// Execute stored procedure
 				cmdString.ExecuteNonQuery();

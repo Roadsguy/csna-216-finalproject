@@ -53,8 +53,6 @@ namespace FinalProject.refills
 					// Hide refill number
 					divRefillNo.Visible = false;
 					txtRefillNo.Enabled = false;
-					// Autofill refill date
-					txtRefillDateTime.Text = DateTime.Now.ToString();
 					// Set header text
 					lblPageHeader.Text = "Edit Refill Record";
 					break;
@@ -90,6 +88,10 @@ namespace FinalProject.refills
 
 		protected void PopulateForms(string rxNo, string refillNo)
 		{
+			// Cancel if either parameter empty
+			if (rxNo == "" || refillNo == "")
+				return;
+
 			try
 			{
 				// Populate Rx No. and Refill No text boxes
@@ -98,7 +100,7 @@ namespace FinalProject.refills
 
 				// Execute stored procedure
 				LouisDataTier dataTier = new LouisDataTier();
-				DataSet refillData = dataTier.GetPatient(rxNo);
+				DataSet refillData = dataTier.GetRefill(rxNo, refillNo);
 
 				if (refillData.Tables[0].Rows.Count > 0) // If anything is returned
 				{

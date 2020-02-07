@@ -51,7 +51,14 @@ namespace FinalProject
 		public event CommandEventHandler AlertScriptTrigger;
 		public void RegisterAlertScript(CommandEventArgs e)
 		{
-			AlertScriptTrigger(this, e);
+			try
+			{
+				AlertScriptTrigger(this, e);
+			}
+			catch
+			{
+
+			}
 		}
 
 		// Save search values event

@@ -274,12 +274,12 @@ namespace FinalProject.prescriptions
 			string patientID = "", drugID = "", physicianID = "", msgID = "";
 			switch (((BasePage)Page).InputType)
 			{
-				case "byName":
+				case "byID":
 					patientID = txtPatientID.Text.Trim();
 					drugID = txtDrugID.Text.Trim();
 					physicianID = txtPhysicianID.Text.Trim();
 					break;
-				case "byID":
+				case "byName":
 					patientID = ddlPatientName.SelectedValue;
 					drugID = ddlDrugName.SelectedValue;
 					physicianID = ddlPhysicianName.SelectedValue;
@@ -320,7 +320,7 @@ namespace FinalProject.prescriptions
 				emptyMessage.Append("Refills Given" + "\\n");
 				emptyFields = true;
 			}
-			if (txtRefillsLeft.Text.Trim() == string.Empty)
+			if (PageType == "edit" && txtRefillsLeft.Text.Trim() == string.Empty)
 			{
 				emptyMessage.Append("Refills Left");
 				emptyFields = true;
