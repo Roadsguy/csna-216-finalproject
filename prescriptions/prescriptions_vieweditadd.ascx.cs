@@ -357,6 +357,9 @@ namespace FinalProject.prescriptions
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Prescription record updated successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -384,6 +387,9 @@ namespace FinalProject.prescriptions
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Prescription record added successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -405,6 +411,11 @@ namespace FinalProject.prescriptions
 
 			// Trigger event to load refill page
 			RefillButtonClicked(new CommandEventArgs("rxNo", cipherRxNo));
+		}
+
+		protected void ClearSavedData()
+		{
+			((BasePage)Page).SearchData = null;
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

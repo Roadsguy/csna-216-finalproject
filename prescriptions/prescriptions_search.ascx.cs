@@ -392,6 +392,9 @@ namespace FinalProject.prescriptions
 			{
 				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Prescription record" + plural + " deleted successfully"));
+
+				// Clear saved data
+				((BasePage)Page).SearchData = null;
 			}
 			else
 			{

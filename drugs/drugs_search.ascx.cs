@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Web.Caching;
 using System.Web.UI.WebControls;
 
 namespace FinalProject.drugs
@@ -82,7 +83,7 @@ namespace FinalProject.drugs
 
 		protected void PopulateGridView()
 		{
-			if (((BasePage)Page).SearchData == null) // Cache is empty{
+			if (((BasePage)Page).SearchData == null) // No saved data
 			{
 				// Declare variables
 				string drugID = "";
@@ -219,6 +220,11 @@ namespace FinalProject.drugs
 
 			if (deleteSuccess == true)
 			{
+				// Clear saved data
+				Cache.Remove("drugNames");
+				((BasePage)Page).SearchData = null;
+
+
 				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Drug record" + plural + " deleted successfully"));
 			}

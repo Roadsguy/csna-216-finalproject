@@ -395,6 +395,9 @@ namespace FinalProject.refills
 			{
 				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Refill record" + plural + " deleted successfully"));
+
+				// Clear saved data
+				((BasePage)Page).SearchData = null;
 			}
 			else
 			{

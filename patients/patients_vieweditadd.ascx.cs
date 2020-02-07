@@ -235,8 +235,8 @@ namespace FinalProject.patients
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Patient record updated successfully"));
 
-						// Clear patient cache
-						ClearPatientCache();
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -272,8 +272,8 @@ namespace FinalProject.patients
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Patient record added successfully"));
 
-						// Clear patient cache
-						ClearPatientCache();
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -288,10 +288,10 @@ namespace FinalProject.patients
 			}
 		}
 
-		protected void ClearPatientCache()
+		protected void ClearSavedData()
 		{
 			Cache.Remove("patientNames");
-			Cache.Remove("srchPatGridData");
+			((BasePage)Page).SearchData = null;
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

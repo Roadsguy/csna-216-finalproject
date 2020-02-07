@@ -146,8 +146,8 @@ namespace FinalProject.drugs
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Drug record updated successfully"));
 
-						// Clear drug cache
-						ClearDrugCache();
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -170,8 +170,8 @@ namespace FinalProject.drugs
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Drug record added successfully"));
 
-						// Clear drug cache
-						ClearDrugCache();
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -186,10 +186,10 @@ namespace FinalProject.drugs
 			}
 		}
 
-		protected void ClearDrugCache()
+		protected void ClearSavedData()
 		{
 			Cache.Remove("drugNames");
-			Cache.Remove("srchDrugGridData");
+			((BasePage)Page).SearchData = null;
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
@@ -88,7 +89,7 @@ namespace FinalProject.patients
 
 		protected void PopulateGridView()
 		{
-			if (((BasePage)Page).SearchData == null) // Cache is empty{
+			if (((BasePage)Page).SearchData == null) // No saved data
 			{
 				// Declare variables
 				string patientID = "";
@@ -227,6 +228,10 @@ namespace FinalProject.patients
 			{
 				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Patient record" + plural + " deleted successfully"));
+
+				// Clear saved data
+				Cache.Remove("patientNames");
+				((BasePage)Page).SearchData = null;
 			}
 			else
 			{

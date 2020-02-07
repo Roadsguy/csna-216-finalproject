@@ -164,6 +164,9 @@ namespace FinalProject.refills
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Refill record updated successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -184,6 +187,9 @@ namespace FinalProject.refills
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Prescription refilled successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -202,6 +208,12 @@ namespace FinalProject.refills
 				// Automatically return to Prescriptions search page
 				GoBackButtonClicked(e);
 			}
+		}
+
+		protected void ClearSavedData()
+		{
+			// Clear saved data
+			((BasePage)Page).SearchData = null;
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

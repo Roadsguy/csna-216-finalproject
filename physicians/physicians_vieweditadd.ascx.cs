@@ -229,6 +229,9 @@ namespace FinalProject.physicians
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Physician record updated successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -266,6 +269,9 @@ namespace FinalProject.physicians
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Physician record added successfully"));
+
+						// Clear saved data
+						ClearSavedData();
 					}
 					else
 					{
@@ -278,6 +284,13 @@ namespace FinalProject.physicians
 					RegisterAlertScript(new CommandEventArgs("script", "Invalid pageType"));
 					break;
 			}
+		}
+
+		protected void ClearSavedData()
+		{
+			// Clear saved data
+			Cache.Remove("physicianNames");
+			((BasePage)Page).SearchData = null;
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

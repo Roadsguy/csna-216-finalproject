@@ -137,6 +137,10 @@ namespace FinalProject.physicians
 			{
 				// Display success message
 				RegisterAlertScript(new CommandEventArgs("script", "Physician record" + plural + " deleted successfully"));
+
+				// Clear saved data
+				Cache.Remove("physicianNames");
+				((BasePage)Page).SearchData = null;
 			}
 			else
 			{
