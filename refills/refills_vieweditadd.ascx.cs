@@ -75,7 +75,7 @@ namespace FinalProject.refills
 					divRefillNo.Visible = false;
 					txtRefillNo.Enabled = false;
 					// Autofill refill date
-					txtRefillDateTime.Text = DateTime.Now.ToString();
+					txtRefillDateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 					// Set header text
 					lblPageHeader.Text = "Add Refill Record";
 					break;
