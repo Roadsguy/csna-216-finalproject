@@ -8,14 +8,13 @@ using System.Data;
 
 namespace FinalProject.drugs
 {
-	public partial class _default : System.Web.UI.Page
+	public partial class _default : BasePage
 	{
 		// Create instance of encryption class
 		public encryption cipher = new encryption();
 
 		// Create instance of user control class
 		public UCPageType ucCurrent;
-
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -27,7 +26,7 @@ namespace FinalProject.drugs
 			LoadUserControl((string)ViewState["pageType"], "");
 		}
 
-		public void LoadUserControl(string pageType, string cipherDrugID)  //(CHANGED)
+		public void LoadUserControl(string pageType, string cipherDrugID)
 		{
 			string controlURL = "";
 			switch (pageType) // Check which page type is being loaded
@@ -52,10 +51,10 @@ namespace FinalProject.drugs
 			// Load user control into update panel
 			ucCurrent = (UCPageType)LoadControl(controlURL);
 			ucCurrent.ID = "ucContent";
-			ucCurrent.PageType = pageType;                                      // Set page type
-			ucCurrent.PrimaryKey = cipherDrugID;                             // Pass patient ID (CHANGED)
-			this.pnlContent.ContentTemplateContainer.Controls.Clear();          // Clear update panel
-			this.pnlContent.ContentTemplateContainer.Controls.Add(ucCurrent);   // Add user control to update panel
+			ucCurrent.PageType = pageType;										// Set page type
+			ucCurrent.PrimaryKey = cipherDrugID;								// Pass drug ID
+			this.pnlContent.ContentTemplateContainer.Controls.Clear();			// Clear update panel
+			this.pnlContent.ContentTemplateContainer.Controls.Add(ucCurrent);	// Add user control to update panel
 
 			switch (pageType) // Check page type to determine event handlers to create
 			{
@@ -88,15 +87,8 @@ namespace FinalProject.drugs
 
 		protected void btnAdd_Click(object sender, EventArgs e)
 		{
-			// Get current values of text boxes in search control
-			TextBox txtSrchDrugID = (TextBox)ucCurrent.FindControl("txtSrchDrugID");    //(CHANGED)
-			TextBox txtSrchDrugName = (TextBox)ucCurrent.FindControl("txtSrchDrugName");    //(CHANGED)
-			TextBox txtSrchDrugDesc = (TextBox)ucCurrent.FindControl("txtSrchDrugDesc");    //(CHANGED)
-
-			// Save typed values in search control to session (to be retrieved when gone back)
-			Session["srchDrugID"] = txtSrchDrugID.Text;			//(CHANGED)
-			Session["srchDrugName"] = txtSrchDrugName.Text;    //(CHANGED)
-			Session["srchDrugDesc"] = txtSrchDrugDesc.Text;    //(CHANGED)
+			// Save search values from fields
+			ucCurrent.SaveSearchValues();
 
 			// Load vieweditadd control with PageType add
 			LoadUserControl("add", "");
@@ -104,13 +96,13 @@ namespace FinalProject.drugs
 
 		protected void Load_View(object sender, CommandEventArgs e)
 		{
-			// Load vieweditadd control with PageType view and patient ID from CommandEventArgs
+			// Load vieweditadd control with PageType view and drug ID from CommandEventArgs
 			LoadUserControl("view", e.CommandArgument.ToString());
 		}
 
 		protected void Load_Edit(object sender, CommandEventArgs e)
 		{
-			// Load vieweditadd control with PageType edit and patient ID from CommandEventArgs
+			// Load vieweditadd control with PageType edit and drug ID from CommandEventArgs
 			LoadUserControl("edit", e.CommandArgument.ToString());
 		}
 

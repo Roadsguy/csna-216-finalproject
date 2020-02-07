@@ -33,6 +33,15 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.TextBox txtRxNo;
 
 		/// <summary>
+		/// divInputByID control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInputByID;
+
+		/// <summary>
 		/// txtPatientID control.
 		/// </summary>
 		/// <remarks>
@@ -60,6 +69,60 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.TextBox txtPhysicianID;
 
 		/// <summary>
+		/// divInputByName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInputByName;
+
+		/// <summary>
+		/// ddlPatientName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlPatientName;
+
+		/// <summary>
+		/// ddlDrugName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlDrugName;
+
+		/// <summary>
+		/// ddlPhysicianName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlPhysicianName;
+
+		/// <summary>
+		/// rdoInputByName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RadioButton rdoInputByName;
+
+		/// <summary>
+		/// rdoInputByID control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RadioButton rdoInputByID;
+
+		/// <summary>
 		/// txtDosage control.
 		/// </summary>
 		/// <remarks>
@@ -78,13 +141,22 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.TextBox txtFrequency;
 
 		/// <summary>
-		/// txtRefillCount control.
+		/// txtRefillsGiven control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtRefillCount;
+		protected global::System.Web.UI.WebControls.TextBox txtRefillsGiven;
+
+		/// <summary>
+		/// divRefillsLeft control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRefillsLeft;
 
 		/// <summary>
 		/// txtRefillsLeft control.
@@ -105,6 +177,15 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.TextBox txtCost;
 
 		/// <summary>
+		/// calStartDate control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::AjaxControlToolkit.CalendarExtender calStartDate;
+
+		/// <summary>
 		/// txtStartDate control.
 		/// </summary>
 		/// <remarks>
@@ -112,6 +193,15 @@ namespace FinalProject.prescriptions
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+
+		/// <summary>
+		/// calFinishDate control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::AjaxControlToolkit.CalendarExtender calFinishDate;
 
 		/// <summary>
 		/// txtFinishDate control.
@@ -139,5 +229,14 @@ namespace FinalProject.prescriptions
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
+
+		/// <summary>
+		/// btnRefill control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnRefill;
 	}
 }

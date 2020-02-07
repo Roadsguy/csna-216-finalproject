@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Data;
-using System.Configuration;
-using System.Data.SqlClient;
+using System.Web.Caching;
+using System.Web.UI.WebControls;
 
 namespace FinalProject
 {
@@ -948,7 +950,7 @@ namespace FinalProject
 			}
 		}
 
-		public DataSet SearchRefills(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID)
+		public DataSet SearchRefills(string strRxNo, string strPatientID, string strDrugID, string strPhysicianID, string strRefillDate)
 		{
 			try
 			{
@@ -970,6 +972,18 @@ namespace FinalProject
 				cmdString.Parameters.Add("@drugID", SqlDbType.VarChar, 8).Value = strDrugID;
 				cmdString.Parameters.Add("@physicianID", SqlDbType.VarChar, 8).Value = strPhysicianID;
 
+				// Define date parameter
+				if (strRefillDate == string.Empty)
+				{
+					// Set database null
+					cmdString.Parameters.Add("@refillDate", SqlDbType.DateTime).Value = DBNull.Value;
+				}
+				else
+				{
+					// Pass string as date
+					cmdString.Parameters.Add("@refillDate", SqlDbType.DateTime).Value = strRefillDate;
+				}
+
 				// Adapter and dataset
 				SqlDataAdapter aAdapter = new SqlDataAdapter();
 				aAdapter.SelectCommand = cmdString;
@@ -980,11 +994,6 @@ namespace FinalProject
 
 				// Return dataSet
 				return aDataSet;
-			}
-			catch (Exception ex)
-			{
-				// Throw exception
-				throw new ArgumentException(ex.Message);
 			}
 			finally
 			{
@@ -1105,6 +1114,53 @@ namespace FinalProject
 			{
 				// Return failure
 				return false;
+			}
+			finally
+			{
+				// Close connection
+				myConn.Close();
+			}
+		}
+
+		public DataSet PopulateDDL(string ddlType)
+		{
+			try
+			{
+				// Open connection
+				myConn.Open();
+
+				// Clear command arguments
+				cmdString.Parameters.Clear();
+
+				// SQL command
+				cmdString.Connection = myConn;
+				cmdString.CommandType = CommandType.StoredProcedure;
+				cmdString.CommandTimeout = 1500;
+				switch (ddlType) // Determine DropDownList type
+				{
+					case "patient":
+						cmdString.CommandText = "GetPatientName";
+						break;
+					case "drug":
+						cmdString.CommandText = "GetDrugName";
+						break;
+					case "physician":
+						cmdString.CommandText = "GetPhysicianName";
+						break;
+					default:
+						throw new Exception("Invalid ddlType");
+				}
+
+				// Adapter and dataset
+				SqlDataAdapter dataAdapter = new SqlDataAdapter();
+				dataAdapter.SelectCommand = cmdString;
+				DataSet ddlNames = new DataSet();
+
+				// Fill adapater
+				dataAdapter.Fill(ddlNames);
+
+				// Return dataSet
+				return ddlNames;
 			}
 			finally
 			{

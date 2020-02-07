@@ -19,15 +19,21 @@ namespace FinalProject.patients
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			// Put previously typed values back into text boxes, if any (used on return from vieweditadd page)
-			txtSrchPatientID.Text = Convert.ToString(Session["srchPatID"]);
-			txtSrchLastName.Text = Convert.ToString(Session["srchLName"]);
-			txtSrchFirstName.Text = Convert.ToString(Session["srchFName"]);
+			if (((BasePage)Page).SearchFields.Length > 0)    //Check if any exist
+			{
+				txtSrchPatientID.Text = ((BasePage)Page).SearchFields[0];
+				txtSrchLastName.Text = ((BasePage)Page).SearchFields[1];
+				txtSrchFirstName.Text = ((BasePage)Page).SearchFields[2];
+			}
 
 			// Establish GridView event handlers
 			grdPatients.PageIndexChanging += new GridViewPageEventHandler(grdPatients_PageIndexChanging);
 			grdPatients.Sorting += new GridViewSortEventHandler(grdPatients_Sorting);
 
-			if (Convert.ToString(Session["srchPatHasSearched"]) == "true") // Check if search already performed
+			// Establish event handler to save search values
+			SavedSearchValues += new Action(SrchPatKeepValues);
+
+			if (((BasePage)Page).HasSearched) // Check if search already performed
 			{
 				// Repopulate GridView
 				PopulateGridView();
@@ -55,7 +61,10 @@ namespace FinalProject.patients
 			try
 			{
 				// Save values in text boxes to session
-				SrchPatSaveSession();
+				SrchPatKeepValues();
+
+				// Clear saved search data
+				((BasePage)Page).SearchData = null;
 
 				// Populate GridView
 				PopulateGridView();
@@ -67,20 +76,51 @@ namespace FinalProject.patients
 			}
 		}
 
+		public void SrchPatKeepValues()
+		{
+			// Save currently entered TextBox values
+			((BasePage)Page).SearchFields = new string[] {
+				txtSrchPatientID.Text.Trim(),
+				txtSrchLastName.Text.Trim(),
+				txtSrchFirstName.Text.Trim()
+			};
+		}
+
 		protected void PopulateGridView()
 		{
-			// Get text box session values
-			string patientID = Convert.ToString(Session["srchPatID"]);
-			string lastName = Convert.ToString(Session["srchLName"]);
-			string firstName = Convert.ToString(Session["srchFName"]);
+			if (((BasePage)Page).SearchData == null) // Cache is empty{
+			{
+				// Declare variables
+				string patientID = "";
+				string lastName = "";
+				string firstName = "";
 
-			// Initiate data tier
-			LouisDataTier aPatient = new LouisDataTier();
-			DataSet patientData = new DataSet();
-			patientData = aPatient.SearchPatients(patientID, lastName, firstName);
+				// Get text box values
+				if (((BasePage)Page).SearchFields != null)                      // Check if SearchFields array exists
+					if (((string[])((BasePage)Page).SearchFields).Length > 0)   // Check if array has values
+					{
+						patientID = ((BasePage)Page).SearchFields[0];
+						lastName = ((BasePage)Page).SearchFields[1];
+						firstName = ((BasePage)Page).SearchFields[2];
+					}
 
-			// Populate datagrid with dataset
-			grdPatients.DataSource = patientData.Tables[0];
+				// Initiate data tier and fill data set
+				LouisDataTier dataTier = new LouisDataTier();
+				DataSet patientData = dataTier.SearchPatients(patientID, lastName, firstName);
+
+				// Populate GridView with dataset
+				grdPatients.DataSource = patientData.Tables[0];
+
+				// Save data to ViewState
+				((BasePage)Page).SearchData = patientData;
+			}
+			else // Saved data exists
+			{
+				// Populate GridView from saved data
+				grdPatients.DataSource = ((BasePage)Page).SearchData.Tables[0];
+			}
+
+			// Bind data to GridView
 			grdPatients.DataBind();
 
 			// Show/Enable Delete Selected button if table has rows
@@ -95,15 +135,8 @@ namespace FinalProject.patients
 				btnDeleteChecked.Visible = false;
 			}
 
-			// Set value that patient search has been performed
-			Session["srchPatHasSearched"] = "true";
-
-			// Delete any cached GridView data
-			Cache.Remove("srchPatGridDataView");
-			// Add new data to cache
-			Cache.Add("srchPatGridDataView", new DataView(patientData.Tables[0]),
-				null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.TimeSpan.FromMinutes(10),
-				System.Web.Caching.CacheItemPriority.Default, null);
+			// Set value that prescription search has been performed
+			((BasePage)Page).HasSearched = true;
 		}
 
 		public void View_Click(object sender, CommandEventArgs e)
@@ -136,11 +169,11 @@ namespace FinalProject.patients
 		public void btnDeleteChecked_Click(object sender, EventArgs e)
 		{
 			// Loads delete confirmation control
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx"); // Load delete confirmation control
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");	// Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
-			ucDelConfirm.DeleteType = "multi";                                              // Set deletion type to multiple
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();                // Clear content of delete confirmation update panel, if any
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);      // Add delete confirmation control to update panel
+			ucDelConfirm.DeleteType = "multi";												// Set deletion type to multiple
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();				// Clear content of delete confirmation update panel, if any
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);		// Add delete confirmation control to update panel
 
 			// Assign event handlers
 			ucDelConfirm.confirmed += new CommandEventHandler(DeleteConfirmed);
@@ -230,21 +263,13 @@ namespace FinalProject.patients
 			string newSortExpr = e.SortExpression;
 			string sortDir = (string)Session["srchPatSortDir"];
 			string oldSortExpr = (string)Session["srchPatSortExpr"];
-			DataView patientData = (DataView)Cache["srchPatGridDataView"];
+			DataView patientData = new DataView(((BasePage)Page).SearchData.Tables[0]);
 
 			var sortedPatientData = grd.SortRecords(oldSortExpr, newSortExpr, sortDir, patientData);
 			grdPatients.DataSource = sortedPatientData.Item1;
 			Session["srchPatSortDir"] = sortedPatientData.Item2;
 			Session["srchPatSortExpr"] = newSortExpr;
 			grdPatients.DataBind();
-		}
-
-		public void SrchPatSaveSession()
-		{
-			// Save currently entered text box values to session
-			Session["srchPatID"] = txtSrchPatientID.Text;
-			Session["srchLName"] = txtSrchLastName.Text;
-			Session["srchFName"] = txtSrchFirstName.Text;
 		}
 	}
 }

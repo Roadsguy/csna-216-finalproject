@@ -75,12 +75,14 @@
     <Content Include="drugs\default.aspx" />
     <Content Include="drugs\drugs_search.ascx" />
     <Content Include="drugs\drugs_vieweditadd.ascx" />
-    <Content Include="drugs\drug_add.aspx" />
-    <Content Include="drugs\drug_edit.aspx" />
     <Content Include="images\delete.svg" />
     <Content Include="images\edit.svg" />
+    <Content Include="images\logout-white.svg" />
+    <Content Include="images\logout.svg" />
+    <Content Include="images\refill.svg" />
     <Content Include="images\view.svg" />
     <Content Include="jquery-3.4.1.js" />
+    <Content Include="login.aspx" />
     <Content Include="main.css" />
     <Content Include="patients\default.aspx" />
     <Content Include="patients\patients_search.ascx" />
@@ -91,13 +93,17 @@
     <Content Include="prescriptions\default.aspx" />
     <Content Include="prescriptions\prescriptions_search.ascx" />
     <Content Include="prescriptions\prescriptions_vieweditadd.ascx" />
-    <Content Include="prescriptions\prescription_add.aspx" />
     <Content Include="refills\default.aspx" />
-    <Content Include="RX.ico" />
+    <Content Include="refills\refills_search.ascx" />
+    <Content Include="refills\refills_vieweditadd.ascx" />
+    <Content Include="favicon.ico" />
     <Content Include="State.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,19 +141,12 @@
     <Compile Include="drugs\drugs_vieweditadd.ascx.designer.cs">
       <DependentUpon>drugs_vieweditadd.ascx</DependentUpon>
     </Compile>
-    <Compile Include="drugs\drug_add.aspx.cs">
-      <DependentUpon>drug_add.aspx</DependentUpon>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="drugs\drug_add.aspx.designer.cs">
-      <DependentUpon>drug_add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="drugs\drug_edit.aspx.cs">
-      <DependentUpon>drug_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="drugs\drug_edit.aspx.designer.cs">
-      <DependentUpon>drug_edit.aspx</DependentUpon>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Louis.master.cs">
       <DependentUpon>Louis.master</DependentUpon>
@@ -220,13 +219,6 @@
     <Compile Include="prescriptions\prescriptions_vieweditadd.ascx.designer.cs">
       <DependentUpon>prescriptions_vieweditadd.ascx</DependentUpon>
     </Compile>
-    <Compile Include="prescriptions\prescription_add.aspx.cs">
-      <DependentUpon>prescription_add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="prescriptions\prescription_add.aspx.designer.cs">
-      <DependentUpon>prescription_add.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="refills\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -239,6 +231,20 @@
     <Compile Include="App_Code\StateManager.cs" />
     <Compile Include="App_Code\UCPageType.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="refills\refills_search.ascx.cs">
+      <DependentUpon>refills_search.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="refills\refills_search.ascx.designer.cs">
+      <DependentUpon>refills_search.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="refills\refills_vieweditadd.ascx.cs">
+      <DependentUpon>refills_vieweditadd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="refills\refills_vieweditadd.ascx.designer.cs">
+      <DependentUpon>refills_vieweditadd.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.prescriptions
+namespace FinalProject.refills
 {
 
 
-	public partial class prescriptions_search
+	public partial class refills_search
 	{
 
 		/// <summary>
@@ -114,6 +114,24 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.DropDownList ddlSrchPhysicianName;
 
 		/// <summary>
+		/// calRefillDate control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::AjaxControlToolkit.CalendarExtender calRefillDate;
+
+		/// <summary>
+		/// txtSrchRefillDate control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtSrchRefillDate;
+
+		/// <summary>
 		/// rdoInputByName control.
 		/// </summary>
 		/// <remarks>
@@ -168,12 +186,12 @@ namespace FinalProject.prescriptions
 		protected global::System.Web.UI.WebControls.LinkButton btnDeleteChecked;
 
 		/// <summary>
-		/// grdPrescriptions control.
+		/// grdRefills control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView grdPrescriptions;
+		protected global::System.Web.UI.WebControls.GridView grdRefills;
 	}
 }

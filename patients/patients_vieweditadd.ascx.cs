@@ -73,7 +73,6 @@ namespace FinalProject.patients
 
 				// Execute stored procedure
 				LouisDataTier dataTier = new LouisDataTier();
-				//DataSet ds = new DataSet();
 				DataSet patientData = dataTier.GetPatient(patientID);
 
 				if (patientData.Tables[0].Rows.Count > 0) // If anything is returned
@@ -235,6 +234,9 @@ namespace FinalProject.patients
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Patient record updated successfully"));
+
+						// Clear patient cache
+						ClearPatientCache();
 					}
 					else
 					{
@@ -269,6 +271,9 @@ namespace FinalProject.patients
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Patient record added successfully"));
+
+						// Clear patient cache
+						ClearPatientCache();
 					}
 					else
 					{
@@ -281,6 +286,12 @@ namespace FinalProject.patients
 					RegisterAlertScript(new CommandEventArgs("script", "Invalid pageType"));
 					break;
 			}
+		}
+
+		protected void ClearPatientCache()
+		{
+			Cache.Remove("patientNames");
+			Cache.Remove("srchPatGridData");
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

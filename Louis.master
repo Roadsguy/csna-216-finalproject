@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Louis.master.cs" Inherits="FinalProject.Louis" %>
-
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +11,8 @@
 <body>
 	<form id="form1" runat="server">
 		<header>
-			Louis's Pharmacy
+			<asp:HyperLink ID="hplLogo" ClientIDMode="static" NavigateUrl="/" runat="server">Louis's Pharmacy</asp:HyperLink>
+			<asp:LinkButton ID="btnLogOut" ClientIDMode="static" runat="server" OnClick="btnLogOut_Click">Log Out <asp:Image ID="imgLogOut" CssClass="inlineimg" runat="server" ImageUrl="~/images/logout-white.svg" Width="24" /></asp:LinkButton>
 		</header>
 		<div class="mainbody">
 			<nav>

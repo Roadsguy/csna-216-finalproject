@@ -7,74 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.drugs
+namespace FinalProject.refills
 {
 
 
-	public partial class drug_add
+	public partial class refills_vieweditadd
 	{
 
 		/// <summary>
-		/// form1 control.
+		/// lblPageHeader control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.WebControls.Label lblPageHeader;
 
 		/// <summary>
-		/// TextBox1 control.
+		/// txtRxNo control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TextBox1;
+		protected global::System.Web.UI.WebControls.TextBox txtRxNo;
 
 		/// <summary>
-		/// TextBox2 control.
+		/// divRefillNo control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TextBox2;
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRefillNo;
 
 		/// <summary>
-		/// TextBox3 control.
+		/// txtRefillNo control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TextBox3;
+		protected global::System.Web.UI.WebControls.TextBox txtRefillNo;
 
 		/// <summary>
-		/// txtMethodOfAdmin control.
+		/// calRefillDate control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtMethodOfAdmin;
+		protected global::AjaxControlToolkit.CalendarExtender calRefillDate;
 
 		/// <summary>
-		/// btnSave control.
+		/// txtRefillDateTime control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSave;
+		protected global::System.Web.UI.WebControls.TextBox txtRefillDateTime;
 
 		/// <summary>
-		/// btnClose control.
+		/// btnGoBack control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnClose;
+		protected global::System.Web.UI.WebControls.LinkButton btnGoBack;
+
+		/// <summary>
+		/// btnSubmit control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
 	}
 }

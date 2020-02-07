@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
-using System.Web.Services;
-using System.IO;
+using System.Web.UI.WebControls;
 
 namespace FinalProject.drugs
 {
@@ -19,15 +13,21 @@ namespace FinalProject.drugs
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			// Put previously typed values back into text boxes, if any (used on return from vieweditadd page)
-			txtSrchDrugID.Text = Convert.ToString(Session["srchDrugID"]);	//CHANGED
-			txtSrchDrugName.Text = Convert.ToString(Session["srchDrugName"]);	//CHANGED
-			txtSrchDrugDesc.Text = Convert.ToString(Session["srchDrugDesc"]);	//CHANGED
+			if (((BasePage)Page).SearchFields.Length > 0)    //Check if any exist
+			{
+				txtSrchDrugID.Text = ((BasePage)Page).SearchFields[0];
+				txtSrchDrugName.Text = ((BasePage)Page).SearchFields[1];
+				txtSrchDrugDesc.Text = ((BasePage)Page).SearchFields[2];
+			}
 
 			// Establish GridView event handlers
-			grdDrugs.PageIndexChanging += new GridViewPageEventHandler(grdDrugs_PageIndexChanging); //CHANGED
-			grdDrugs.Sorting += new GridViewSortEventHandler(grdDrugs_Sorting); //CHANGED
+			grdDrugs.PageIndexChanging += new GridViewPageEventHandler(grdDrugs_PageIndexChanging);
+			grdDrugs.Sorting += new GridViewSortEventHandler(grdDrugs_Sorting);
 
-			if (Convert.ToString(Session["srchPatHasSearched"]) == "true") // Check if search already performed
+			// Establish event handler to save search values
+			SavedSearchValues += new Action(SrchDrugKeepValues);
+
+			if (((BasePage)Page).HasSearched) // Check if search already performed
 			{
 				// Repopulate GridView
 				PopulateGridView();
@@ -50,13 +50,15 @@ namespace FinalProject.drugs
 			}
 		}
 
-
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{
 			try
 			{
 				// Save values in text boxes to session
-				SrchDrugSaveSession();	//CHANGED
+				SrchDrugKeepValues();
+
+				// Clear saved search data
+				((BasePage)Page).SearchData = null;
 
 				// Populate GridView
 				PopulateGridView();
@@ -64,28 +66,59 @@ namespace FinalProject.drugs
 			catch
 			{
 				// Display failure message
-				RegisterAlertScript(new CommandEventArgs("script", "Failed to load patient data"));
+				RegisterAlertScript(new CommandEventArgs("script", "Failed to load drug data"));
 			}
+		}
+
+		public void SrchDrugKeepValues()
+		{
+			// Save currently entered TextBox values
+			((BasePage)Page).SearchFields = new string[] {
+				txtSrchDrugID.Text.Trim(),
+				txtSrchDrugName.Text.Trim(),
+				txtSrchDrugDesc.Text.Trim()
+			};
 		}
 
 		protected void PopulateGridView()
 		{
-			// Get text box session values
-			string DrugID = Convert.ToString(Session["srchDrugID"]);    //CHANGED
-			string DrugName = Convert.ToString(Session["srchDrugName"]);    //CHANGED
-			string DrugDesc = Convert.ToString(Session["srchDrugDesc"]);    //CHANGED
+			if (((BasePage)Page).SearchData == null) // Cache is empty{
+			{
+				// Declare variables
+				string drugID = "";
+				string drugName = "";
+				string drugDesc = "";
 
-			// Initiate data tier
-			LouisDataTier aDrug = new LouisDataTier();  //CHANGED
-			DataSet DrugData = new DataSet();   //CHANGED
-			DrugData = aDrug.SearchDrugs(DrugID, DrugName, DrugDesc);   //CHANGED
+				// Get text box values
+				if (((BasePage)Page).SearchFields != null)                      // Check if SearchFields array exists
+					if (((BasePage)Page).SearchFields.Length > 0)   // Check if array has values
+					{
+						drugID = ((BasePage)Page).SearchFields[0];
+						drugName = ((BasePage)Page).SearchFields[1];
+						drugDesc = ((BasePage)Page).SearchFields[2];
+					}
 
-			// Populate datagrid with dataset
-			grdDrugs.DataSource = DrugData.Tables[0];   //CHANGED
-			grdDrugs.DataBind();    //CHANGED
+				// Initiate data tier and fill data set
+				LouisDataTier dataTier = new LouisDataTier();
+				DataSet drugData = dataTier.SearchDrugs(drugID, drugName, drugDesc);
+
+				// Populate GridView with dataset
+				grdDrugs.DataSource = drugData.Tables[0];
+
+				// Save data to ViewState
+				((BasePage)Page).SearchData = drugData;
+			}
+			else // Saved data exists
+			{
+				// Populate GridView from saved data
+				grdDrugs.DataSource = ((BasePage)Page).SearchData.Tables[0];
+			}
+
+			// Bind data to GridView
+			grdDrugs.DataBind();
 
 			// Show/Enable Delete Selected button if table has rows
-			if (grdDrugs.Rows.Count > 0)    //CHANGED
+			if (grdDrugs.Rows.Count > 0)
 			{
 				btnDeleteChecked.Enabled = true;
 				btnDeleteChecked.Visible = true;
@@ -96,15 +129,8 @@ namespace FinalProject.drugs
 				btnDeleteChecked.Visible = false;
 			}
 
-			// Set value that patient search has been performed
-			Session["srchDrugHasSearched"] = "true";    //CHANGED
-
-			// Delete any cached GridView data
-			Cache.Remove("srchDrugGridDataView");	//CHANGED
-			// Add new data to cache
-			Cache.Add("srchDrugGridDataView", new DataView(DrugData.Tables[0]), //CHANGED
-				null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.TimeSpan.FromMinutes(10),
-				System.Web.Caching.CacheItemPriority.Default, null);
+			// Set value that prescription search has been performed
+			((BasePage)Page).HasSearched = true;
 		}
 
 		public void View_Click(object sender, CommandEventArgs e)
@@ -122,12 +148,12 @@ namespace FinalProject.drugs
 		public void Delete_Click(object sender, CommandEventArgs e)
 		{
 			// Loads delete confirmation control
-			Session["delDrugID"] = e.CommandArgument.ToString();    //CHANGED                        // Store patient ID of record to be deleted
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx"); // Load delete confirmation control
+			Session["delDrugID"] = e.CommandArgument.ToString();							// Store drug ID of record to be deleted
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");	// Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
-			ucDelConfirm.DeleteType = "single";                                             // Set deletion type to single
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();                // Clear content of delete confirmation update panel, if any
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);      // Add delete confirmation control to update panel
+			ucDelConfirm.DeleteType = "single";												// Set deletion type to single
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();				// Clear content of delete confirmation update panel, if any
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);		// Add delete confirmation control to update panel
 
 			// Assign event handlers
 			ucDelConfirm.confirmed += new CommandEventHandler(DeleteConfirmed);
@@ -137,11 +163,11 @@ namespace FinalProject.drugs
 		public void btnDeleteChecked_Click(object sender, EventArgs e)
 		{
 			// Loads delete confirmation control
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx"); // Load delete confirmation control
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");	// Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
-			ucDelConfirm.DeleteType = "multi";                                              // Set deletion type to multiple
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();                // Clear content of delete confirmation update panel, if any
-			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);      // Add delete confirmation control to update panel
+			ucDelConfirm.DeleteType = "multi";												// Set deletion type to multiple
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();				// Clear content of delete confirmation update panel, if any
+			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Add(ucDelConfirm);		// Add delete confirmation control to update panel
 
 			// Assign event handlers
 			ucDelConfirm.confirmed += new CommandEventHandler(DeleteConfirmed);
@@ -165,8 +191,8 @@ namespace FinalProject.drugs
 			switch (e.CommandArgument.ToString())
 			{
 				case "single": // Deleting a single record
-					string singleDrugID = cipher.Decrypt(Convert.ToString(Session["delDrugID"]));   //CHANGED 
-					deleteSuccess = dataTier.DeletePatient(singleDrugID);   //CHANGED 
+					string singleDrugID = cipher.Decrypt(Convert.ToString(Session["delDrugID"]));
+					deleteSuccess = dataTier.DeleteDrug(singleDrugID);
 					break;
 
 				case "multi": // Deleting all checked records
@@ -177,14 +203,14 @@ namespace FinalProject.drugs
 						foreach (GridViewRow row in grdDrugs.Rows)
 						{
 							// Find checkbox of row
-							CheckBox chkSelectDrugID = new CheckBox();  //CHANGED 
-							chkSelectDrugID = (CheckBox)row.FindControl("chkDrugID");   //CHANGED 
+							CheckBox chkSelectDrugID = new CheckBox();
+							chkSelectDrugID = (CheckBox)row.FindControl("chkDrugID");
 
 							// Delete record if checkbox checked
-							if (chkSelectDrugID.Checked)    //CHANGED 
+							if (chkSelectDrugID.Checked)
 							{
-								string multiDrugID = row.Cells[1].Text; //CHANGED 
-								deleteSuccess = dataTier.DeletePatient(multiDrugID);    //CHANGED 
+								string multiDrugID = row.Cells[1].Text;
+								deleteSuccess = dataTier.DeleteDrug(multiDrugID);
 							}
 						}
 					}
@@ -194,12 +220,12 @@ namespace FinalProject.drugs
 			if (deleteSuccess == true)
 			{
 				// Display success message
-				RegisterAlertScript(new CommandEventArgs("script", "Drug record" + plural + " deleted successfully"));  //CHANGED 
+				RegisterAlertScript(new CommandEventArgs("script", "Drug record" + plural + " deleted successfully"));
 			}
 			else
 			{
 				// Display failure message
-				RegisterAlertScript(new CommandEventArgs("script", "Failed to delete drug record" + plural));   //CHANGED 
+				RegisterAlertScript(new CommandEventArgs("script", "Failed to delete drug record" + plural));
 			}
 
 			// Remove delete confirmation control and update GridView
@@ -214,7 +240,7 @@ namespace FinalProject.drugs
 			Session["delConfirmActive"] = false;
 		}
 
-		protected void grdDrugs_PageIndexChanging(object sender, GridViewPageEventArgs e)   //CHANGED 
+		protected void grdDrugs_PageIndexChanging(object sender, GridViewPageEventArgs e)
 		{
 			int pageNum = e.NewPageIndex;
 			Paging(pageNum);
@@ -222,31 +248,22 @@ namespace FinalProject.drugs
 
 		private void Paging(int page)
 		{
-			grdDrugs.PageIndex = page;  //CHANGED 
+			grdDrugs.PageIndex = page;
 			PopulateGridView();
 		}
 
 		protected void grdDrugs_Sorting(object sender, GridViewSortEventArgs e)
 		{
 			string newSortExpr = e.SortExpression;
-			string sortDir = (string)Session["srchDrugSortDir"];    //CHANGED 
-			string oldSortExpr = (string)Session["srchDrugSortExpr"];   //CHANGED 
-			DataView DrugData = (DataView)Cache["srchDrugGridDataView"];    //CHANGED 
+			string sortDir = (string)Session["srchDrugSortDir"];
+			string oldSortExpr = (string)Session["srchDrugSortExpr"];
+			DataView drugData = new DataView(((BasePage)Page).SearchData.Tables[0]);
 
-			var sortedDrugData = grd.SortRecords(oldSortExpr, newSortExpr, sortDir, DrugData);
+			var sortedDrugData = grd.SortRecords(oldSortExpr, newSortExpr, sortDir, drugData);
 			grdDrugs.DataSource = sortedDrugData.Item1;
 			Session["srchDrugSortDir"] = sortedDrugData.Item2;
 			Session["srchDrugSortExpr"] = newSortExpr;
 			grdDrugs.DataBind();
 		}
-
-		public void SrchDrugSaveSession()
-		{
-			// Save currently entered text box values to session
-			Session["srchDrugID"] = txtSrchDrugID.Text;
-			Session["srchDrugName"] = txtSrchDrugName.Text;
-			Session["srchDrugDesc"] = txtSrchDrugDesc.Text;
-		}
-
 	}
 }

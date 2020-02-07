@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
+using System.Data;
 
 namespace FinalProject.drugs
 {
@@ -14,12 +16,11 @@ namespace FinalProject.drugs
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-			// Decrypt and store patient ID if included
-			string DrugID = "";
+			// Decrypt and store drug ID if included
+			string drugID = "";
 			if (!string.IsNullOrEmpty(PrimaryKey))
 			{
-				DrugID = cipher.Decrypt(PrimaryKey);
+				drugID = cipher.Decrypt(PrimaryKey);
 			}
 
 			// Do different things for each page type
@@ -27,7 +28,7 @@ namespace FinalProject.drugs
 			{
 				case "view":
 					// Populate controls
-					PopulateForms(DrugID);
+					PopulateForms(drugID);
 					// Disable all controls
 					DisableAllControls();
 					// Set header text
@@ -36,8 +37,8 @@ namespace FinalProject.drugs
 
 				case "edit":
 					// Populate controls
-					PopulateForms(DrugID);
-					// Enable patient ID text box
+					PopulateForms(drugID);
+					// Enable drug ID text box
 					txtDrugID.Enabled = false;
 					// Set header text
 					lblPageHeader.Text = "Edit Drug Record";
@@ -54,25 +55,24 @@ namespace FinalProject.drugs
 			}
 		}
 
-		protected void PopulateForms(string DrugID)
+		protected void PopulateForms(string drugID)
 		{
 			try
 			{
-				// Populate Patient ID textbox with input value
-				txtDrugID.Text = DrugID;
+				// Populate drug ID textbox with input value
+				txtDrugID.Text = drugID;
 
 				// Execute stored procedure
 				LouisDataTier dataTier = new LouisDataTier();
-				//DataSet ds = new DataSet();
-				DataSet DrugData = dataTier.GetPatient(DrugID);
+				DataSet drugData = dataTier.GetDrug(drugID);
 
-				if (DrugData.Tables[0].Rows.Count > 0) // If anything is returned
+				if (drugData.Tables[0].Rows.Count > 0) // If anything is returned
 				{
 					// Populate text/combo boxes with values
-					txtDrugID.Text = DrugData.Tables[0].Rows[0]["DrugID"].ToString();
-					txtDrugName.Text = DrugData.Tables[0].Rows[0]["DrugName"].ToString();
-					txtDrugDesc.Text = DrugData.Tables[0].Rows[0]["DrugDesc"].ToString();
-					txtMethodOfAdmin.Text = DrugData.Tables[0].Rows[0]["methodOfAdmin"].ToString();
+					txtDrugID.Text = drugData.Tables[0].Rows[0]["drugID"].ToString();
+					txtDrugName.Text = drugData.Tables[0].Rows[0]["drugName"].ToString();
+					txtDrugDesc.Text = drugData.Tables[0].Rows[0]["drugDesc"].ToString();
+					txtMethodOfAdmin.Text = drugData.Tables[0].Rows[0]["methodOfAdmin"].ToString();
 				}
 			}
 			catch
@@ -95,9 +95,6 @@ namespace FinalProject.drugs
 
 		protected void btnSubmit_Click(object sender, EventArgs e)
 		{
-			// Retrieve page type
-			string pageType = PageType;
-
 			// Check for invalid null values and show error message
 			StringBuilder emptyMessage = new StringBuilder();
 			emptyMessage.Append("The following fields cannot be empty:" + "\\n"); // Double backslashes are required for registering JS to work
@@ -120,7 +117,7 @@ namespace FinalProject.drugs
 			}
 			if (txtMethodOfAdmin.Text.Trim() == string.Empty)
 			{
-				emptyMessage.Append("Method Of Administration" + "\\n");
+				emptyMessage.Append("Method of Admin." + "\\n");
 				emptyFields = true;
 			}
 			if (emptyFields == true)
@@ -133,7 +130,7 @@ namespace FinalProject.drugs
 			LouisDataTier dataTier = new LouisDataTier();
 
 			// Determine editing or adding record
-			switch (pageType)
+			switch (PageType)
 			{
 				case "edit":
 					// Execute stored procedure (returns true if successful)
@@ -148,6 +145,9 @@ namespace FinalProject.drugs
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Drug record updated successfully"));
+
+						// Clear drug cache
+						ClearDrugCache();
 					}
 					else
 					{
@@ -169,11 +169,14 @@ namespace FinalProject.drugs
 					{
 						// Display success message
 						RegisterAlertScript(new CommandEventArgs("script", "Drug record added successfully"));
+
+						// Clear drug cache
+						ClearDrugCache();
 					}
 					else
 					{
 						// Display failure message
-						RegisterAlertScript(new CommandEventArgs("script", "Failed to add Drug record"));
+						RegisterAlertScript(new CommandEventArgs("script", "Failed to add drug record"));
 					}
 					break;
 				default:
@@ -181,6 +184,12 @@ namespace FinalProject.drugs
 					RegisterAlertScript(new CommandEventArgs("script", "Invalid pageType"));
 					break;
 			}
+		}
+
+		protected void ClearDrugCache()
+		{
+			Cache.Remove("drugNames");
+			Cache.Remove("srchDrugGridData");
 		}
 
 		protected void btnGoBack_Click(object sender, EventArgs e)

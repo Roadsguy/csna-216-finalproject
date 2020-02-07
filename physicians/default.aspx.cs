@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject.physicians
 {
-	public partial class _default : System.Web.UI.Page
+	public partial class _default : BasePage
 	{
 
 		// Create instance of encryption class
@@ -89,15 +89,8 @@ namespace FinalProject.physicians
 
 		protected void btnAdd_Click(object sender, EventArgs e)
 		{
-			// Get current values of text boxes in search control
-			TextBox txtSrchPhysicianID = (TextBox)ucCurrent.FindControl("txtSrchPhysicianID");
-			TextBox txtSrchLastName = (TextBox)ucCurrent.FindControl("txtSrchLastName");
-			TextBox txtSrchFirstName = (TextBox)ucCurrent.FindControl("txtSrchFirstName");
-
-			// Save typed values in search control to session (to be retrieved when gone back)
-			Session["srchPhysID"] = txtSrchPhysicianID.Text;
-			Session["srchLName"] = txtSrchLastName.Text;
-			Session["srchFName"] = txtSrchFirstName.Text;
+			// Save search values from fields
+			ucCurrent.SaveSearchValues();
 
 			// Load vieweditadd control with PageType add
 			LoadUserControl("add", "");

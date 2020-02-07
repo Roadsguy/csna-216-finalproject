@@ -18,15 +18,22 @@ namespace FinalProject.physicians
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			// Put previously typed values back into text boxes, if any (used on return from vieweditadd page)
-			txtSrchPhysicianID.Text = Convert.ToString(Session["srchPhysID"]);
-			txtSrchLastName.Text = Convert.ToString(Session["srchLName"]);
-			txtSrchFirstName.Text = Convert.ToString(Session["srchFName"]);
+			if (((BasePage)Page).SearchFields.Length > 0)    //Check if any exist
+			{
+				txtSrchPhysicianID.Text = ((BasePage)Page).SearchFields[0];
+				txtSrchLastName.Text = ((BasePage)Page).SearchFields[1];
+				txtSrchFirstName.Text = ((BasePage)Page).SearchFields[2];
+				txtSrchEmployer.Text = ((BasePage)Page).SearchFields[3];
+			}
 
 			// Establish GridView event handlers
 			grdPhysicians.PageIndexChanging += new GridViewPageEventHandler(grdPhysicians_PageIndexChanging);
 			grdPhysicians.Sorting += new GridViewSortEventHandler(grdPhysicians_Sorting);
 
-			if (Convert.ToString(Session["srchPhysHasSearched"]) == "true") // Check if search already performed
+			// Establish event handler to save search values
+			SavedSearchValues += new Action(SrchPhysKeepValues);
+
+			if (((BasePage)Page).HasSearched) // Check if search already performed
 			{
 				// Repopulate GridView
 				PopulateGridView();
@@ -66,7 +73,7 @@ namespace FinalProject.physicians
 			string newSortExpr = e.SortExpression;
 			string sortDir = (string)Session["srchPhysSortDir"];
 			string oldSortExpr = (string)Session["srchPhysSortExpr"];
-			DataView physicianData = (DataView)Cache["srchPhysGridDataView"];
+			DataView physicianData = new DataView(((BasePage)Page).SearchData.Tables[0]);
 
 			var sortedPhysicianData = grd.SortRecords(oldSortExpr, newSortExpr, sortDir, physicianData);
 			grdPhysicians.DataSource = sortedPhysicianData.Item1;
@@ -74,8 +81,6 @@ namespace FinalProject.physicians
 			Session["srchPhysSortExpr"] = newSortExpr;
 			grdPhysicians.DataBind();
 		}
-
-
 
 		protected void btnDeleteChecked_Click(object sender, EventArgs e)
 		{
@@ -121,7 +126,7 @@ namespace FinalProject.physicians
 							if (chkSelectPhysID.Checked)
 							{
 								string multiPhysicianID = row.Cells[1].Text;
-								deleteSuccess = dataTier.DeletePatient(multiPhysicianID);
+								deleteSuccess = dataTier.DeletePhysician(multiPhysicianID);
 							}
 						}
 					}
@@ -131,12 +136,12 @@ namespace FinalProject.physicians
 			if (deleteSuccess == true)
 			{
 				// Display success message
-				RegisterAlertScript(new CommandEventArgs("script", "Patient record" + plural + " deleted successfully"));
+				RegisterAlertScript(new CommandEventArgs("script", "Physician record" + plural + " deleted successfully"));
 			}
 			else
 			{
 				// Display failure message
-				RegisterAlertScript(new CommandEventArgs("script", "Failed to delete patient record" + plural));
+				RegisterAlertScript(new CommandEventArgs("script", "Failed to delete physician record" + plural));
 			}
 
 			// Remove delete confirmation control and update GridView
@@ -157,7 +162,10 @@ namespace FinalProject.physicians
 			try
 			{
 				// Save values in text boxes to session
-				//SrchPatSaveSession();									 (currently not working)
+				SrchPhysKeepValues();
+
+				// Clear saved search data
+				((BasePage)Page).SearchData = null;
 
 				// Populate GridView
 				PopulateGridView();
@@ -165,25 +173,58 @@ namespace FinalProject.physicians
 			catch
 			{
 				// Display failure message
-				RegisterAlertScript(new CommandEventArgs("script", "Failed to load patient data"));
+				RegisterAlertScript(new CommandEventArgs("script", "Failed to load physician data"));
 			}
+		}
+
+		public void SrchPhysKeepValues()
+		{
+			// Save currently entered TextBox values
+			((BasePage)Page).SearchFields = new string[] {
+				txtSrchPhysicianID.Text.Trim(),
+				txtSrchLastName.Text.Trim(),
+				txtSrchFirstName.Text.Trim(),
+				txtSrchEmployer.Text.Trim()
+			};
 		}
 
 		protected void PopulateGridView()
 		{
-			// Get text box session values
-			string physicianID = Convert.ToString(Session["srchPhysID"]);
-			string lastName = Convert.ToString(Session["srchLName"]);
-			string firstName = Convert.ToString(Session["srchFName"]);
-			string employer = Convert.ToString(Session["srchEmployer"]);
+			if (((BasePage)Page).SearchData == null) // Cache is empty{
+			{
+				// Declare variables
+				string physicianID = "";
+				string lastName = "";
+				string firstName = "";
+				string employer = "";
 
-			// Initiate data tier
-			LouisDataTier aPhysician = new LouisDataTier();
-			DataSet physicianData = new DataSet();
-			physicianData = aPhysician.SearchPhysicians(physicianID, lastName, firstName, employer);
+				// Get text box values
+				if (((BasePage)Page).SearchFields != null)                      // Check if SearchFields array exists
+					if (((string[])((BasePage)Page).SearchFields).Length > 0)   // Check if array has values
+					{
+						physicianID = ((BasePage)Page).SearchFields[0];
+						lastName = ((BasePage)Page).SearchFields[1];
+						firstName = ((BasePage)Page).SearchFields[2];
+						employer = ((BasePage)Page).SearchFields[3];
+					}
 
-			// Populate datagrid with dataset
-			grdPhysicians.DataSource = physicianData.Tables[0];
+				// Initiate data tier and fill data set
+				LouisDataTier dataTier = new LouisDataTier();
+				DataSet physicianData = dataTier.SearchPhysicians(physicianID, lastName, firstName, employer);
+
+				// Populate GridView with dataset
+				grdPhysicians.DataSource = physicianData.Tables[0];
+
+				// Save data to ViewState
+				((BasePage)Page).SearchData = physicianData;
+			}
+			else // Saved data exists
+			{
+				// Populate GridView from saved data
+				grdPhysicians.DataSource = ((BasePage)Page).SearchData.Tables[0];
+			}
+
+			// Bind data to GridView
 			grdPhysicians.DataBind();
 
 			// Show/Enable Delete Selected button if table has rows
@@ -198,15 +239,8 @@ namespace FinalProject.physicians
 				btnDeleteChecked.Visible = false;
 			}
 
-			// Set value that patient search has been performed
-			Session["srchPhysHasSearched"] = "true";
-
-			// Delete any cached GridView data
-			Cache.Remove("srchPhysGridDataView");
-			// Add new data to cache
-			Cache.Add("srchPhysGridDataView", new DataView(physicianData.Tables[0]),
-				null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.TimeSpan.FromMinutes(10),
-				System.Web.Caching.CacheItemPriority.Default, null);
+			// Set value that prescription search has been performed
+			((BasePage)Page).HasSearched = true;
 		}
 
 		public void View_Click(object sender, CommandEventArgs e)
@@ -222,8 +256,8 @@ namespace FinalProject.physicians
 		public void Delete_Click(object sender, CommandEventArgs e)
 		{
 			// Loads delete confirmation control
-			Session["delPhysicianID"] = e.CommandArgument.ToString();                         // Store patient ID of record to be deleted
-			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx"); // Load delete confirmation control
+			Session["delPhysicianID"] = e.CommandArgument.ToString();						// Store physician ID of record to be deleted
+			deleteconfirm ucDelConfirm = (deleteconfirm)LoadControl("/deleteconfirm.ascx");	// Load delete confirmation control
 			ucDelConfirm.ID = "ucDelConfirm";
 			ucDelConfirm.DeleteType = "single";                                             // Set deletion type to single
 			this.pnlDeleteConfirm.ContentTemplateContainer.Controls.Clear();                // Clear content of delete confirmation update panel, if any
